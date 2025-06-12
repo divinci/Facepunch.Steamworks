@@ -81,7 +81,7 @@ namespace Generator
 			}
 			EndBlock();
 
-			System.IO.File.WriteAllText( $"{folder}{iface.Name}.cs", sb.ToString() );
+			CodeWriter.WriteAllText( $"{folder}{iface.Name}.cs", sb.ToString() );
 		}
 
 		private void WriteFunction( SteamApiDefinition.Interface iface, SteamApiDefinition.Interface.Method func )
