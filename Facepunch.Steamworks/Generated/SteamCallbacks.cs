@@ -12,8 +12,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamServersConnected_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamServersConnected;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamServersConnected;
 		#endregion
 	}
 	
@@ -26,8 +26,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamServerConnectFailure_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamServerConnectFailure;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamServerConnectFailure;
 		#endregion
 	}
 	
@@ -38,8 +38,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamServersDisconnected_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamServersDisconnected;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamServersDisconnected;
 		#endregion
 	}
 	
@@ -54,8 +54,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ClientGameServerDeny_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ClientGameServerDeny;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ClientGameServerDeny;
 		#endregion
 	}
 	
@@ -66,8 +66,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(IPCFailure_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.IPCFailure;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.IPCFailure;
 		#endregion
 		internal enum EFailureType : int
 		{
@@ -83,8 +83,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LicensesUpdated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LicensesUpdated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LicensesUpdated;
 		#endregion
 	}
 	
@@ -97,8 +97,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ValidateAuthTicketResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ValidateAuthTicketResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ValidateAuthTicketResponse;
 		#endregion
 	}
 	
@@ -111,8 +111,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MicroTxnAuthorizationResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MicroTxnAuthorizationResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MicroTxnAuthorizationResponse;
 		#endregion
 	}
 	
@@ -123,8 +123,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(EncryptedAppTicketResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.EncryptedAppTicketResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.EncryptedAppTicketResponse;
 		#endregion
 	}
 	
@@ -136,36 +136,36 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GetAuthSessionTicketResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GetAuthSessionTicketResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GetAuthSessionTicketResponse;
 		#endregion
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct GameWebCallback_t : ICallbackData
 	{
-		internal string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
+		internal readonly string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_szURL
 		internal byte[] URL; // m_szURL char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameWebCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameWebCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameWebCallback;
 		#endregion
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct StoreAuthURLResponse_t : ICallbackData
 	{
-		internal string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
+		internal readonly string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 512)] // byte[] m_szURL
 		internal byte[] URL; // m_szURL char [512]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(StoreAuthURLResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.StoreAuthURLResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.StoreAuthURLResponse;
 		#endregion
 	}
 	
@@ -181,8 +181,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MarketEligibilityResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MarketEligibilityResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MarketEligibilityResponse;
 		#endregion
 	}
 	
@@ -201,8 +201,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(DurationControl_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.DurationControl;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.DurationControl;
 		#endregion
 	}
 	
@@ -217,8 +217,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GetTicketForWebApiResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GetTicketForWebApiResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GetTicketForWebApiResponse;
 		#endregion
 	}
 	
@@ -230,8 +230,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(PersonaStateChange_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.PersonaStateChange;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.PersonaStateChange;
 		#endregion
 	}
 	
@@ -246,25 +246,25 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameOverlayActivated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameOverlayActivated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameOverlayActivated;
 		#endregion
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct GameServerChangeRequested_t : ICallbackData
 	{
-		internal string ServerUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Server, 0, System.Array.IndexOf<byte>( Server, 0 ) );
+		internal readonly string ServerUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Server, 0, System.Array.IndexOf<byte>( Server, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)] // byte[] m_rgchServer
 		internal byte[] Server; // m_rgchServer char [64]
-		internal string PasswordUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Password, 0, System.Array.IndexOf<byte>( Password, 0 ) );
+		internal readonly string PasswordUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Password, 0, System.Array.IndexOf<byte>( Password, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)] // byte[] m_rgchPassword
 		internal byte[] Password; // m_rgchPassword char [64]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameServerChangeRequested_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameServerChangeRequested;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameServerChangeRequested;
 		#endregion
 	}
 	
@@ -276,8 +276,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameLobbyJoinRequested_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameLobbyJoinRequested;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameLobbyJoinRequested;
 		#endregion
 	}
 	
@@ -291,8 +291,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AvatarImageLoaded_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AvatarImageLoaded;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AvatarImageLoaded;
 		#endregion
 	}
 	
@@ -305,8 +305,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ClanOfficerListResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ClanOfficerListResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ClanOfficerListResponse;
 		#endregion
 	}
 	
@@ -318,8 +318,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FriendRichPresenceUpdate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FriendRichPresenceUpdate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FriendRichPresenceUpdate;
 		#endregion
 	}
 	
@@ -327,14 +327,14 @@ namespace Steamworks.Data
 	internal struct GameRichPresenceJoinRequested_t : ICallbackData
 	{
 		internal ulong SteamIDFriend; // m_steamIDFriend CSteamID
-		internal string ConnectUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Connect, 0, System.Array.IndexOf<byte>( Connect, 0 ) );
+		internal readonly string ConnectUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Connect, 0, System.Array.IndexOf<byte>( Connect, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_rgchConnect
 		internal byte[] Connect; // m_rgchConnect char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameRichPresenceJoinRequested_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameRichPresenceJoinRequested;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameRichPresenceJoinRequested;
 		#endregion
 	}
 	
@@ -347,8 +347,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameConnectedClanChatMsg_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameConnectedClanChatMsg;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameConnectedClanChatMsg;
 		#endregion
 	}
 	
@@ -360,8 +360,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameConnectedChatJoin_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameConnectedChatJoin;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameConnectedChatJoin;
 		#endregion
 	}
 	
@@ -377,8 +377,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameConnectedChatLeave_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameConnectedChatLeave;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameConnectedChatLeave;
 		#endregion
 	}
 	
@@ -390,8 +390,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(DownloadClanActivityCountsResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.DownloadClanActivityCountsResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.DownloadClanActivityCountsResult;
 		#endregion
 	}
 	
@@ -403,8 +403,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(JoinClanChatRoomCompletionResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.JoinClanChatRoomCompletionResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.JoinClanChatRoomCompletionResult;
 		#endregion
 	}
 	
@@ -416,8 +416,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GameConnectedFriendChatMsg_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GameConnectedFriendChatMsg;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GameConnectedFriendChatMsg;
 		#endregion
 	}
 	
@@ -430,8 +430,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FriendsGetFollowerCount_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FriendsGetFollowerCount;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FriendsGetFollowerCount;
 		#endregion
 	}
 	
@@ -445,8 +445,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FriendsIsFollowing_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FriendsIsFollowing;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FriendsIsFollowing;
 		#endregion
 	}
 	
@@ -461,8 +461,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FriendsEnumerateFollowingList_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FriendsEnumerateFollowingList;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FriendsEnumerateFollowingList;
 		#endregion
 	}
 	
@@ -477,8 +477,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SetPersonaNameResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SetPersonaNameResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SetPersonaNameResponse;
 		#endregion
 	}
 	
@@ -488,22 +488,22 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UnreadChatMessagesChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UnreadChatMessagesChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UnreadChatMessagesChanged;
 		#endregion
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct OverlayBrowserProtocolNavigation_t : ICallbackData
 	{
-		internal string RgchURIUTF8() => Steamworks.Utility.Utf8NoBom.GetString( RgchURI, 0, System.Array.IndexOf<byte>( RgchURI, 0 ) );
+		internal readonly string RgchURIUTF8() => Steamworks.Utility.Utf8NoBom.GetString( RgchURI, 0, System.Array.IndexOf<byte>( RgchURI, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)] // byte[] rgchURI
 		internal byte[] RgchURI; // rgchURI char [1024]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(OverlayBrowserProtocolNavigation_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.OverlayBrowserProtocolNavigation;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.OverlayBrowserProtocolNavigation;
 		#endregion
 	}
 	
@@ -514,8 +514,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(EquippedProfileItemsChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.EquippedProfileItemsChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.EquippedProfileItemsChanged;
 		#endregion
 	}
 	
@@ -539,8 +539,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(EquippedProfileItems_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.EquippedProfileItems;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.EquippedProfileItems;
 		#endregion
 	}
 	
@@ -550,8 +550,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(IPCountry_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.IPCountry;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.IPCountry;
 		#endregion
 	}
 	
@@ -562,8 +562,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LowBatteryPower_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LowBatteryPower;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LowBatteryPower;
 		#endregion
 	}
 	
@@ -576,8 +576,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamAPICallCompleted_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamAPICallCompleted;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamAPICallCompleted;
 		#endregion
 	}
 	
@@ -587,8 +587,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamShutdown_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamShutdown;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamShutdown;
 		#endregion
 	}
 	
@@ -599,8 +599,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(CheckFileSignature_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.CheckFileSignature;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.CheckFileSignature;
 		#endregion
 	}
 	
@@ -614,8 +614,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GamepadTextInputDismissed_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GamepadTextInputDismissed;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GamepadTextInputDismissed;
 		#endregion
 	}
 	
@@ -625,8 +625,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AppResumingFromSuspend_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AppResumingFromSuspend;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AppResumingFromSuspend;
 		#endregion
 	}
 	
@@ -636,8 +636,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FloatingGamepadTextInputDismissed_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FloatingGamepadTextInputDismissed;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FloatingGamepadTextInputDismissed;
 		#endregion
 	}
 	
@@ -648,8 +648,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FilterTextDictionaryChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FilterTextDictionaryChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FilterTextDictionaryChanged;
 		#endregion
 	}
 	
@@ -667,8 +667,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FavoritesListChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FavoritesListChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FavoritesListChanged;
 		#endregion
 	}
 	
@@ -681,8 +681,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyInvite_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyInvite;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyInvite;
 		#endregion
 	}
 	
@@ -697,8 +697,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyEnter_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyEnter;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyEnter;
 		#endregion
 	}
 	
@@ -711,8 +711,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyDataUpdate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyDataUpdate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyDataUpdate;
 		#endregion
 	}
 	
@@ -726,8 +726,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyChatUpdate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyChatUpdate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyChatUpdate;
 		#endregion
 	}
 	
@@ -741,8 +741,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyChatMsg_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyChatMsg;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyChatMsg;
 		#endregion
 	}
 	
@@ -756,8 +756,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyGameCreated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyGameCreated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyGameCreated;
 		#endregion
 	}
 	
@@ -768,8 +768,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyMatchList_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyMatchList;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyMatchList;
 		#endregion
 	}
 	
@@ -782,8 +782,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyKicked_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyKicked;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyKicked;
 		#endregion
 	}
 	
@@ -795,8 +795,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LobbyCreated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LobbyCreated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LobbyCreated;
 		#endregion
 	}
 	
@@ -809,8 +809,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(PSNGameBootInviteResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.PSNGameBootInviteResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.PSNGameBootInviteResult;
 		#endregion
 	}
 	
@@ -821,8 +821,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FavoritesListAccountsUpdated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FavoritesListAccountsUpdated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FavoritesListAccountsUpdated;
 		#endregion
 	}
 	
@@ -838,8 +838,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SearchForGameProgressCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SearchForGameProgressCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SearchForGameProgressCallback;
 		#endregion
 	}
 	
@@ -856,8 +856,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SearchForGameResultCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SearchForGameResultCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SearchForGameResultCallback;
 		#endregion
 	}
 	
@@ -869,8 +869,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RequestPlayersForGameProgressCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RequestPlayersForGameProgressCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RequestPlayersForGameProgressCallback;
 		#endregion
 	}
 	
@@ -890,8 +890,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RequestPlayersForGameResultCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RequestPlayersForGameResultCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RequestPlayersForGameResultCallback;
 		#endregion
 		internal enum PlayerAcceptState_t : int
 		{
@@ -911,8 +911,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RequestPlayersForGameFinalResultCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RequestPlayersForGameFinalResultCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RequestPlayersForGameFinalResultCallback;
 		#endregion
 	}
 	
@@ -925,8 +925,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SubmitPlayerResultResultCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SubmitPlayerResultResultCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SubmitPlayerResultResultCallback;
 		#endregion
 	}
 	
@@ -938,8 +938,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(EndGameResultCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.EndGameResultCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.EndGameResultCallback;
 		#endregion
 	}
 	
@@ -949,14 +949,14 @@ namespace Steamworks.Data
 		internal Result Result; // m_eResult EResult
 		internal ulong BeaconID; // m_ulBeaconID PartyBeaconID_t
 		internal ulong SteamIDBeaconOwner; // m_SteamIDBeaconOwner CSteamID
-		internal string ConnectStringUTF8() => Steamworks.Utility.Utf8NoBom.GetString( ConnectString, 0, System.Array.IndexOf<byte>( ConnectString, 0 ) );
+		internal readonly string ConnectStringUTF8() => Steamworks.Utility.Utf8NoBom.GetString( ConnectString, 0, System.Array.IndexOf<byte>( ConnectString, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_rgchConnectString
 		internal byte[] ConnectString; // m_rgchConnectString char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(JoinPartyCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.JoinPartyCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.JoinPartyCallback;
 		#endregion
 	}
 	
@@ -968,8 +968,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(CreateBeaconCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.CreateBeaconCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.CreateBeaconCallback;
 		#endregion
 	}
 	
@@ -981,8 +981,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ReservationNotificationCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ReservationNotificationCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ReservationNotificationCallback;
 		#endregion
 	}
 	
@@ -993,8 +993,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ChangeNumOpenSlotsCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ChangeNumOpenSlotsCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ChangeNumOpenSlotsCallback;
 		#endregion
 	}
 	
@@ -1004,8 +1004,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AvailableBeaconLocationsUpdated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AvailableBeaconLocationsUpdated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AvailableBeaconLocationsUpdated;
 		#endregion
 	}
 	
@@ -1015,8 +1015,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ActiveBeaconsUpdated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ActiveBeaconsUpdated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ActiveBeaconsUpdated;
 		#endregion
 	}
 	
@@ -1025,14 +1025,14 @@ namespace Steamworks.Data
 	{
 		internal Result Result; // m_eResult EResult
 		internal ulong File; // m_hFile UGCHandle_t
-		internal string FilenameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Filename, 0, System.Array.IndexOf<byte>( Filename, 0 ) );
+		internal readonly string FilenameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Filename, 0, System.Array.IndexOf<byte>( Filename, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 260)] // byte[] m_rgchFilename
 		internal byte[] Filename; // m_rgchFilename char [260]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageFileShareResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageFileShareResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageFileShareResult;
 		#endregion
 	}
 	
@@ -1046,8 +1046,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStoragePublishFileResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStoragePublishFileResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStoragePublishFileResult;
 		#endregion
 	}
 	
@@ -1059,8 +1059,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageDeletePublishedFileResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageDeletePublishedFileResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageDeletePublishedFileResult;
 		#endregion
 	}
 	
@@ -1075,8 +1075,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageEnumerateUserPublishedFilesResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserPublishedFilesResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserPublishedFilesResult;
 		#endregion
 	}
 	
@@ -1088,8 +1088,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageSubscribePublishedFileResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageSubscribePublishedFileResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageSubscribePublishedFileResult;
 		#endregion
 	}
 	
@@ -1106,8 +1106,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageEnumerateUserSubscribedFilesResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserSubscribedFilesResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserSubscribedFilesResult;
 		#endregion
 	}
 	
@@ -1119,8 +1119,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageUnsubscribePublishedFileResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageUnsubscribePublishedFileResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageUnsubscribePublishedFileResult;
 		#endregion
 	}
 	
@@ -1134,8 +1134,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageUpdatePublishedFileResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageUpdatePublishedFileResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageUpdatePublishedFileResult;
 		#endregion
 	}
 	
@@ -1146,15 +1146,15 @@ namespace Steamworks.Data
 		internal ulong File; // m_hFile UGCHandle_t
 		internal AppId AppID; // m_nAppID AppId_t
 		internal int SizeInBytes; // m_nSizeInBytes int32
-		internal string PchFileNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PchFileName, 0, System.Array.IndexOf<byte>( PchFileName, 0 ) );
+		internal readonly string PchFileNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PchFileName, 0, System.Array.IndexOf<byte>( PchFileName, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 260)] // byte[] m_pchFileName
 		internal byte[] PchFileName; // m_pchFileName char [260]
 		internal ulong SteamIDOwner; // m_ulSteamIDOwner uint64
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageDownloadUGCResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageDownloadUGCResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageDownloadUGCResult;
 		#endregion
 	}
 	
@@ -1165,10 +1165,10 @@ namespace Steamworks.Data
 		internal PublishedFileId PublishedFileId; // m_nPublishedFileId PublishedFileId_t
 		internal AppId CreatorAppID; // m_nCreatorAppID AppId_t
 		internal AppId ConsumerAppID; // m_nConsumerAppID AppId_t
-		internal string TitleUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Title, 0, System.Array.IndexOf<byte>( Title, 0 ) );
+		internal readonly string TitleUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Title, 0, System.Array.IndexOf<byte>( Title, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 129)] // byte[] m_rgchTitle
 		internal byte[] Title; // m_rgchTitle char [129]
-		internal string DescriptionUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Description, 0, System.Array.IndexOf<byte>( Description, 0 ) );
+		internal readonly string DescriptionUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Description, 0, System.Array.IndexOf<byte>( Description, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 8000)] // byte[] m_rgchDescription
 		internal byte[] Description; // m_rgchDescription char [8000]
 		internal ulong File; // m_hFile UGCHandle_t
@@ -1179,17 +1179,17 @@ namespace Steamworks.Data
 		internal RemoteStoragePublishedFileVisibility Visibility; // m_eVisibility ERemoteStoragePublishedFileVisibility
 		[MarshalAs(UnmanagedType.I1)]
 		internal bool Banned; // m_bBanned bool
-		internal string TagsUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Tags, 0, System.Array.IndexOf<byte>( Tags, 0 ) );
+		internal readonly string TagsUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Tags, 0, System.Array.IndexOf<byte>( Tags, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 1025)] // byte[] m_rgchTags
 		internal byte[] Tags; // m_rgchTags char [1025]
 		[MarshalAs(UnmanagedType.I1)]
 		internal bool TagsTruncated; // m_bTagsTruncated bool
-		internal string PchFileNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PchFileName, 0, System.Array.IndexOf<byte>( PchFileName, 0 ) );
+		internal readonly string PchFileNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PchFileName, 0, System.Array.IndexOf<byte>( PchFileName, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 260)] // byte[] m_pchFileName
 		internal byte[] PchFileName; // m_pchFileName char [260]
 		internal int FileSize; // m_nFileSize int32
 		internal int PreviewFileSize; // m_nPreviewFileSize int32
-		internal string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
+		internal readonly string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_rgchURL
 		internal byte[] URL; // m_rgchURL char [256]
 		internal WorkshopFileType FileType; // m_eFileType EWorkshopFileType
@@ -1198,8 +1198,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageGetPublishedFileDetailsResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageGetPublishedFileDetailsResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageGetPublishedFileDetailsResult;
 		#endregion
 	}
 	
@@ -1218,8 +1218,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageEnumerateWorkshopFilesResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateWorkshopFilesResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageEnumerateWorkshopFilesResult;
 		#endregion
 	}
 	
@@ -1235,8 +1235,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageGetPublishedItemVoteDetailsResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageGetPublishedItemVoteDetailsResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageGetPublishedItemVoteDetailsResult;
 		#endregion
 	}
 	
@@ -1248,8 +1248,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStoragePublishedFileSubscribed_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileSubscribed;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileSubscribed;
 		#endregion
 	}
 	
@@ -1261,8 +1261,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStoragePublishedFileUnsubscribed_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileUnsubscribed;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileUnsubscribed;
 		#endregion
 	}
 	
@@ -1274,8 +1274,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStoragePublishedFileDeleted_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileDeleted;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileDeleted;
 		#endregion
 	}
 	
@@ -1287,8 +1287,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageUpdateUserPublishedItemVoteResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageUpdateUserPublishedItemVoteResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageUpdateUserPublishedItemVoteResult;
 		#endregion
 	}
 	
@@ -1301,8 +1301,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageUserVoteDetails_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageUserVoteDetails;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageUserVoteDetails;
 		#endregion
 	}
 	
@@ -1317,8 +1317,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageEnumerateUserSharedWorkshopFilesResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserSharedWorkshopFilesResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageEnumerateUserSharedWorkshopFilesResult;
 		#endregion
 	}
 	
@@ -1331,8 +1331,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageSetUserPublishedFileActionResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageSetUserPublishedFileActionResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageSetUserPublishedFileActionResult;
 		#endregion
 	}
 	
@@ -1350,8 +1350,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageEnumeratePublishedFilesByUserActionResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageEnumeratePublishedFilesByUserActionResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageEnumeratePublishedFilesByUserActionResult;
 		#endregion
 	}
 	
@@ -1364,8 +1364,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStoragePublishFileProgress_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStoragePublishFileProgress;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStoragePublishFileProgress;
 		#endregion
 	}
 	
@@ -1378,8 +1378,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStoragePublishedFileUpdated_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileUpdated;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStoragePublishedFileUpdated;
 		#endregion
 	}
 	
@@ -1390,8 +1390,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageFileWriteAsyncComplete_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageFileWriteAsyncComplete;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageFileWriteAsyncComplete;
 		#endregion
 	}
 	
@@ -1405,8 +1405,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageFileReadAsyncComplete_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageFileReadAsyncComplete;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageFileReadAsyncComplete;
 		#endregion
 	}
 	
@@ -1416,8 +1416,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoteStorageLocalFileChange_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoteStorageLocalFileChange;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoteStorageLocalFileChange;
 		#endregion
 	}
 	
@@ -1430,8 +1430,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserStatsReceived_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserStatsReceived;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserStatsReceived;
 		#endregion
 	}
 	
@@ -1443,8 +1443,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserStatsStored_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserStatsStored;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserStatsStored;
 		#endregion
 	}
 	
@@ -1454,7 +1454,7 @@ namespace Steamworks.Data
 		internal ulong GameID; // m_nGameID uint64
 		[MarshalAs(UnmanagedType.I1)]
 		internal bool GroupAchievement; // m_bGroupAchievement bool
-		internal string AchievementNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( AchievementName, 0, System.Array.IndexOf<byte>( AchievementName, 0 ) );
+		internal readonly string AchievementNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( AchievementName, 0, System.Array.IndexOf<byte>( AchievementName, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)] // byte[] m_rgchAchievementName
 		internal byte[] AchievementName; // m_rgchAchievementName char [128]
 		internal uint CurProgress; // m_nCurProgress uint32
@@ -1462,8 +1462,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserAchievementStored_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserAchievementStored;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserAchievementStored;
 		#endregion
 	}
 	
@@ -1475,8 +1475,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LeaderboardFindResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LeaderboardFindResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LeaderboardFindResult;
 		#endregion
 	}
 	
@@ -1489,8 +1489,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LeaderboardScoresDownloaded_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LeaderboardScoresDownloaded;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LeaderboardScoresDownloaded;
 		#endregion
 	}
 	
@@ -1506,8 +1506,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LeaderboardScoreUploaded_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LeaderboardScoreUploaded;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LeaderboardScoreUploaded;
 		#endregion
 	}
 	
@@ -1519,8 +1519,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(NumberOfCurrentPlayers_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.NumberOfCurrentPlayers;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.NumberOfCurrentPlayers;
 		#endregion
 	}
 	
@@ -1531,8 +1531,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserStatsUnloaded_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserStatsUnloaded;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserStatsUnloaded;
 		#endregion
 	}
 	
@@ -1540,7 +1540,7 @@ namespace Steamworks.Data
 	internal struct UserAchievementIconFetched_t : ICallbackData
 	{
 		internal GameId GameID; // m_nGameID CGameID
-		internal string AchievementNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( AchievementName, 0, System.Array.IndexOf<byte>( AchievementName, 0 ) );
+		internal readonly string AchievementNameUTF8() => Steamworks.Utility.Utf8NoBom.GetString( AchievementName, 0, System.Array.IndexOf<byte>( AchievementName, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)] // byte[] m_rgchAchievementName
 		internal byte[] AchievementName; // m_rgchAchievementName char [128]
 		[MarshalAs(UnmanagedType.I1)]
@@ -1549,8 +1549,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserAchievementIconFetched_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserAchievementIconFetched;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserAchievementIconFetched;
 		#endregion
 	}
 	
@@ -1562,8 +1562,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GlobalAchievementPercentagesReady_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GlobalAchievementPercentagesReady;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GlobalAchievementPercentagesReady;
 		#endregion
 	}
 	
@@ -1575,8 +1575,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(LeaderboardUGCSet_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.LeaderboardUGCSet;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.LeaderboardUGCSet;
 		#endregion
 	}
 	
@@ -1588,8 +1588,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GlobalStatsReceived_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GlobalStatsReceived;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GlobalStatsReceived;
 		#endregion
 	}
 	
@@ -1600,8 +1600,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(DlcInstalled_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.DlcInstalled;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.DlcInstalled;
 		#endregion
 	}
 	
@@ -1611,8 +1611,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(NewUrlLaunchParameters_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.NewUrlLaunchParameters;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.NewUrlLaunchParameters;
 		#endregion
 	}
 	
@@ -1622,14 +1622,14 @@ namespace Steamworks.Data
 		internal Result Result; // m_eResult EResult
 		internal uint AppID; // m_nAppID uint32
 		internal uint CchKeyLength; // m_cchKeyLength uint32
-		internal string KeyUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Key, 0, System.Array.IndexOf<byte>( Key, 0 ) );
+		internal readonly string KeyUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Key, 0, System.Array.IndexOf<byte>( Key, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 240)] // byte[] m_rgchKey
 		internal byte[] Key; // m_rgchKey char [240]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AppProofOfPurchaseKeyResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AppProofOfPurchaseKeyResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AppProofOfPurchaseKeyResponse;
 		#endregion
 	}
 	
@@ -1644,8 +1644,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(FileDetailsResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.FileDetailsResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.FileDetailsResult;
 		#endregion
 	}
 	
@@ -1660,8 +1660,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(TimedTrialStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.TimedTrialStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.TimedTrialStatus;
 		#endregion
 	}
 	
@@ -1672,8 +1672,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(P2PSessionRequest_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.P2PSessionRequest;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.P2PSessionRequest;
 		#endregion
 	}
 	
@@ -1685,8 +1685,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(P2PSessionConnectFail_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.P2PSessionConnectFail;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.P2PSessionConnectFail;
 		#endregion
 	}
 	
@@ -1698,8 +1698,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ScreenshotReady_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ScreenshotReady;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ScreenshotReady;
 		#endregion
 	}
 	
@@ -1709,8 +1709,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ScreenshotRequested_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ScreenshotRequested;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ScreenshotRequested;
 		#endregion
 	}
 	
@@ -1720,8 +1720,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(PlaybackStatusHasChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.PlaybackStatusHasChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.PlaybackStatusHasChanged;
 		#endregion
 	}
 	
@@ -1732,8 +1732,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(VolumeHasChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.VolumeHasChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.VolumeHasChanged;
 		#endregion
 	}
 	
@@ -1743,8 +1743,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerRemoteWillActivate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerRemoteWillActivate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerRemoteWillActivate;
 		#endregion
 	}
 	
@@ -1754,8 +1754,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerRemoteWillDeactivate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerRemoteWillDeactivate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerRemoteWillDeactivate;
 		#endregion
 	}
 	
@@ -1765,8 +1765,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerRemoteToFront_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerRemoteToFront;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerRemoteToFront;
 		#endregion
 	}
 	
@@ -1776,8 +1776,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWillQuit_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWillQuit;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWillQuit;
 		#endregion
 	}
 	
@@ -1787,8 +1787,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsPlay_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlay;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsPlay;
 		#endregion
 	}
 	
@@ -1798,8 +1798,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsPause_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPause;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsPause;
 		#endregion
 	}
 	
@@ -1809,8 +1809,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsPlayPrevious_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayPrevious;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayPrevious;
 		#endregion
 	}
 	
@@ -1820,8 +1820,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsPlayNext_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayNext;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayNext;
 		#endregion
 	}
 	
@@ -1833,8 +1833,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsShuffled_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsShuffled;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsShuffled;
 		#endregion
 	}
 	
@@ -1846,8 +1846,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsLooped_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsLooped;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsLooped;
 		#endregion
 	}
 	
@@ -1858,8 +1858,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsVolume_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsVolume;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsVolume;
 		#endregion
 	}
 	
@@ -1870,8 +1870,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerSelectsQueueEntry_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerSelectsQueueEntry;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerSelectsQueueEntry;
 		#endregion
 	}
 	
@@ -1882,8 +1882,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerSelectsPlaylistEntry_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerSelectsPlaylistEntry;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerSelectsPlaylistEntry;
 		#endregion
 	}
 	
@@ -1894,8 +1894,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(MusicPlayerWantsPlayingRepeatStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayingRepeatStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.MusicPlayerWantsPlayingRepeatStatus;
 		#endregion
 	}
 	
@@ -1911,8 +1911,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTTPRequestCompleted_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTTPRequestCompleted;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTTPRequestCompleted;
 		#endregion
 	}
 	
@@ -1924,8 +1924,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTTPRequestHeadersReceived_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTTPRequestHeadersReceived;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTTPRequestHeadersReceived;
 		#endregion
 	}
 	
@@ -1939,8 +1939,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTTPRequestDataReceived_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTTPRequestDataReceived;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTTPRequestDataReceived;
 		#endregion
 	}
 	
@@ -1951,8 +1951,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInputDeviceConnected_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInputDeviceConnected;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInputDeviceConnected;
 		#endregion
 	}
 	
@@ -1963,8 +1963,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInputDeviceDisconnected_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInputDeviceDisconnected;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInputDeviceDisconnected;
 		#endregion
 	}
 	
@@ -1983,8 +1983,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInputConfigurationLoaded_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInputConfigurationLoaded;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInputConfigurationLoaded;
 		#endregion
 	}
 	
@@ -1999,8 +1999,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInputGamepadSlotChange_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInputGamepadSlotChange;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInputGamepadSlotChange;
 		#endregion
 	}
 	
@@ -2013,14 +2013,14 @@ namespace Steamworks.Data
 		internal uint TotalMatchingResults; // m_unTotalMatchingResults uint32
 		[MarshalAs(UnmanagedType.I1)]
 		internal bool CachedData; // m_bCachedData bool
-		internal string NextCursorUTF8() => Steamworks.Utility.Utf8NoBom.GetString( NextCursor, 0, System.Array.IndexOf<byte>( NextCursor, 0 ) );
+		internal readonly string NextCursorUTF8() => Steamworks.Utility.Utf8NoBom.GetString( NextCursor, 0, System.Array.IndexOf<byte>( NextCursor, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_rgchNextCursor
 		internal byte[] NextCursor; // m_rgchNextCursor char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamUGCQueryCompleted_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamUGCQueryCompleted;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamUGCQueryCompleted;
 		#endregion
 	}
 	
@@ -2033,8 +2033,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamUGCRequestUGCDetailsResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamUGCRequestUGCDetailsResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamUGCRequestUGCDetailsResult;
 		#endregion
 	}
 	
@@ -2048,8 +2048,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(CreateItemResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.CreateItemResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.CreateItemResult;
 		#endregion
 	}
 	
@@ -2063,8 +2063,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SubmitItemUpdateResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SubmitItemUpdateResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SubmitItemUpdateResult;
 		#endregion
 	}
 	
@@ -2078,8 +2078,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ItemInstalled_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ItemInstalled;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ItemInstalled;
 		#endregion
 	}
 	
@@ -2092,8 +2092,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(DownloadItemResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.DownloadItemResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.DownloadItemResult;
 		#endregion
 	}
 	
@@ -2107,8 +2107,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserFavoriteItemsListChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserFavoriteItemsListChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserFavoriteItemsListChanged;
 		#endregion
 	}
 	
@@ -2122,8 +2122,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SetUserItemVoteResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SetUserItemVoteResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SetUserItemVoteResult;
 		#endregion
 	}
 	
@@ -2141,8 +2141,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GetUserItemVoteResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GetUserItemVoteResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GetUserItemVoteResult;
 		#endregion
 	}
 	
@@ -2153,8 +2153,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(StartPlaytimeTrackingResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.StartPlaytimeTrackingResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.StartPlaytimeTrackingResult;
 		#endregion
 	}
 	
@@ -2165,8 +2165,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(StopPlaytimeTrackingResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.StopPlaytimeTrackingResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.StopPlaytimeTrackingResult;
 		#endregion
 	}
 	
@@ -2179,8 +2179,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AddUGCDependencyResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AddUGCDependencyResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AddUGCDependencyResult;
 		#endregion
 	}
 	
@@ -2193,8 +2193,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoveUGCDependencyResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoveUGCDependencyResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoveUGCDependencyResult;
 		#endregion
 	}
 	
@@ -2207,8 +2207,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AddAppDependencyResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AddAppDependencyResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AddAppDependencyResult;
 		#endregion
 	}
 	
@@ -2221,8 +2221,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(RemoveAppDependencyResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.RemoveAppDependencyResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.RemoveAppDependencyResult;
 		#endregion
 	}
 	
@@ -2238,8 +2238,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GetAppDependenciesResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GetAppDependenciesResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GetAppDependenciesResult;
 		#endregion
 	}
 	
@@ -2251,8 +2251,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(DeleteItemResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.DeleteItemResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.DeleteItemResult;
 		#endregion
 	}
 	
@@ -2263,8 +2263,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(UserSubscribedItemsListChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.UserSubscribedItemsListChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.UserSubscribedItemsListChanged;
 		#endregion
 	}
 	
@@ -2282,8 +2282,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(WorkshopEULAStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.WorkshopEULAStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.WorkshopEULAStatus;
 		#endregion
 	}
 	
@@ -2294,8 +2294,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_BrowserReady_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_BrowserReady;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_BrowserReady;
 		#endregion
 	}
 	
@@ -2317,8 +2317,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_NeedsPaint_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_NeedsPaint;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_NeedsPaint;
 		#endregion
 	}
 	
@@ -2334,8 +2334,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_StartRequest_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_StartRequest;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_StartRequest;
 		#endregion
 	}
 	
@@ -2346,8 +2346,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_CloseBrowser_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_CloseBrowser;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_CloseBrowser;
 		#endregion
 	}
 	
@@ -2365,8 +2365,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_URLChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_URLChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_URLChanged;
 		#endregion
 	}
 	
@@ -2379,8 +2379,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_FinishedRequest_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_FinishedRequest;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_FinishedRequest;
 		#endregion
 	}
 	
@@ -2392,8 +2392,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_OpenLinkInNewTab_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_OpenLinkInNewTab;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_OpenLinkInNewTab;
 		#endregion
 	}
 	
@@ -2405,8 +2405,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_ChangedTitle_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_ChangedTitle;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_ChangedTitle;
 		#endregion
 	}
 	
@@ -2419,8 +2419,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_SearchResults_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_SearchResults;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_SearchResults;
 		#endregion
 	}
 	
@@ -2435,8 +2435,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_CanGoBackAndForward_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_CanGoBackAndForward;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_CanGoBackAndForward;
 		#endregion
 	}
 	
@@ -2453,8 +2453,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_HorizontalScroll_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_HorizontalScroll;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_HorizontalScroll;
 		#endregion
 	}
 	
@@ -2471,8 +2471,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_VerticalScroll_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_VerticalScroll;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_VerticalScroll;
 		#endregion
 	}
 	
@@ -2490,8 +2490,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_LinkAtPosition_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_LinkAtPosition;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_LinkAtPosition;
 		#endregion
 	}
 	
@@ -2503,8 +2503,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_JSAlert_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_JSAlert;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_JSAlert;
 		#endregion
 	}
 	
@@ -2516,8 +2516,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_JSConfirm_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_JSConfirm;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_JSConfirm;
 		#endregion
 	}
 	
@@ -2530,8 +2530,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_FileOpenDialog_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_FileOpenDialog;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_FileOpenDialog;
 		#endregion
 	}
 	
@@ -2548,8 +2548,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_NewWindow_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_NewWindow;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_NewWindow;
 		#endregion
 	}
 	
@@ -2561,8 +2561,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_SetCursor_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_SetCursor;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_SetCursor;
 		#endregion
 	}
 	
@@ -2574,8 +2574,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_StatusText_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_StatusText;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_StatusText;
 		#endregion
 	}
 	
@@ -2587,8 +2587,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_ShowToolTip_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_ShowToolTip;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_ShowToolTip;
 		#endregion
 	}
 	
@@ -2600,8 +2600,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_UpdateToolTip_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_UpdateToolTip;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_UpdateToolTip;
 		#endregion
 	}
 	
@@ -2612,8 +2612,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_HideToolTip_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_HideToolTip;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_HideToolTip;
 		#endregion
 	}
 	
@@ -2625,8 +2625,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(HTML_BrowserRestarted_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.HTML_BrowserRestarted;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.HTML_BrowserRestarted;
 		#endregion
 	}
 	
@@ -2638,8 +2638,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryResultReady_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInventoryResultReady;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInventoryResultReady;
 		#endregion
 	}
 	
@@ -2650,8 +2650,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryFullUpdate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInventoryFullUpdate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInventoryFullUpdate;
 		#endregion
 	}
 	
@@ -2661,8 +2661,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryDefinitionUpdate_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInventoryDefinitionUpdate;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInventoryDefinitionUpdate;
 		#endregion
 	}
 	
@@ -2677,8 +2677,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryEligiblePromoItemDefIDs_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInventoryEligiblePromoItemDefIDs;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInventoryEligiblePromoItemDefIDs;
 		#endregion
 	}
 	
@@ -2691,8 +2691,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryStartPurchaseResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInventoryStartPurchaseResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInventoryStartPurchaseResult;
 		#endregion
 	}
 	
@@ -2700,21 +2700,21 @@ namespace Steamworks.Data
 	internal struct SteamInventoryRequestPricesResult_t : ICallbackData
 	{
 		internal Result Result; // m_result EResult
-		internal string CurrencyUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Currency, 0, System.Array.IndexOf<byte>( Currency, 0 ) );
+		internal readonly string CurrencyUTF8() => Steamworks.Utility.Utf8NoBom.GetString( Currency, 0, System.Array.IndexOf<byte>( Currency, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] // byte[] m_rgchCurrency
 		internal byte[] Currency; // m_rgchCurrency char [4]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamInventoryRequestPricesResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamInventoryRequestPricesResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamInventoryRequestPricesResult;
 		#endregion
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct SteamTimelineGamePhaseRecordingExists_t : ICallbackData
 	{
-		internal string PhaseIDUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PhaseID, 0, System.Array.IndexOf<byte>( PhaseID, 0 ) );
+		internal readonly string PhaseIDUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PhaseID, 0, System.Array.IndexOf<byte>( PhaseID, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)] // byte[] m_rgchPhaseID
 		internal byte[] PhaseID; // m_rgchPhaseID char [64]
 		internal ulong RecordingMS; // m_ulRecordingMS uint64
@@ -2724,8 +2724,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamTimelineGamePhaseRecordingExists_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamTimelineGamePhaseRecordingExists;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamTimelineGamePhaseRecordingExists;
 		#endregion
 	}
 	
@@ -2738,8 +2738,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamTimelineEventRecordingExists_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamTimelineEventRecordingExists;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamTimelineEventRecordingExists;
 		#endregion
 	}
 	
@@ -2748,14 +2748,14 @@ namespace Steamworks.Data
 	{
 		internal Result Result; // m_eResult EResult
 		internal AppId VideoAppID; // m_unVideoAppID AppId_t
-		internal string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
+		internal readonly string URLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( URL, 0, System.Array.IndexOf<byte>( URL, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_rgchURL
 		internal byte[] URL; // m_rgchURL char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GetVideoURLResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GetVideoURLResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GetVideoURLResult;
 		#endregion
 	}
 	
@@ -2767,8 +2767,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GetOPFSettingsResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GetOPFSettingsResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GetOPFSettingsResult;
 		#endregion
 	}
 	
@@ -2780,8 +2780,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(BroadcastUploadStart_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.BroadcastUploadStart;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.BroadcastUploadStart;
 		#endregion
 	}
 	
@@ -2792,8 +2792,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(BroadcastUploadStop_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.BroadcastUploadStop;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.BroadcastUploadStop;
 		#endregion
 	}
 	
@@ -2803,8 +2803,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamParentalSettingsChanged_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamParentalSettingsChanged;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamParentalSettingsChanged;
 		#endregion
 	}
 	
@@ -2815,8 +2815,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamRemotePlaySessionConnected_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamRemotePlaySessionConnected;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamRemotePlaySessionConnected;
 		#endregion
 	}
 	
@@ -2827,22 +2827,22 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamRemotePlaySessionDisconnected_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamRemotePlaySessionDisconnected;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamRemotePlaySessionDisconnected;
 		#endregion
 	}
 	
 	[StructLayout( LayoutKind.Sequential, Pack = Platform.StructPlatformPackSize )]
 	internal struct SteamRemotePlayTogetherGuestInvite_t : ICallbackData
 	{
-		internal string ConnectURLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( ConnectURL, 0, System.Array.IndexOf<byte>( ConnectURL, 0 ) );
+		internal readonly string ConnectURLUTF8() => Steamworks.Utility.Utf8NoBom.GetString( ConnectURL, 0, System.Array.IndexOf<byte>( ConnectURL, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)] // byte[] m_szConnectURL
 		internal byte[] ConnectURL; // m_szConnectURL char [1024]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamRemotePlayTogetherGuestInvite_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamRemotePlayTogetherGuestInvite;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamRemotePlayTogetherGuestInvite;
 		#endregion
 	}
 	
@@ -2853,8 +2853,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamNetworkingMessagesSessionRequest_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamNetworkingMessagesSessionRequest;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamNetworkingMessagesSessionRequest;
 		#endregion
 	}
 	
@@ -2865,8 +2865,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamNetworkingMessagesSessionFailed_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamNetworkingMessagesSessionFailed;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamNetworkingMessagesSessionFailed;
 		#endregion
 	}
 	
@@ -2879,8 +2879,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamNetConnectionStatusChangedCallback_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamNetConnectionStatusChangedCallback;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamNetConnectionStatusChangedCallback;
 		#endregion
 	}
 	
@@ -2888,14 +2888,14 @@ namespace Steamworks.Data
 	internal struct SteamNetAuthenticationStatus_t : ICallbackData
 	{
 		internal SteamNetworkingAvailability Avail; // m_eAvail ESteamNetworkingAvailability
-		internal string DebugMsgUTF8() => Steamworks.Utility.Utf8NoBom.GetString( DebugMsg, 0, System.Array.IndexOf<byte>( DebugMsg, 0 ) );
+		internal readonly string DebugMsgUTF8() => Steamworks.Utility.Utf8NoBom.GetString( DebugMsg, 0, System.Array.IndexOf<byte>( DebugMsg, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_debugMsg
 		internal byte[] DebugMsg; // m_debugMsg char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamNetAuthenticationStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamNetAuthenticationStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamNetAuthenticationStatus;
 		#endregion
 	}
 	
@@ -2906,14 +2906,14 @@ namespace Steamworks.Data
 		internal int PingMeasurementInProgress; // m_bPingMeasurementInProgress int
 		internal SteamNetworkingAvailability AvailNetworkConfig; // m_eAvailNetworkConfig ESteamNetworkingAvailability
 		internal SteamNetworkingAvailability AvailAnyRelay; // m_eAvailAnyRelay ESteamNetworkingAvailability
-		internal string DebugMsgUTF8() => Steamworks.Utility.Utf8NoBom.GetString( DebugMsg, 0, System.Array.IndexOf<byte>( DebugMsg, 0 ) );
+		internal readonly string DebugMsgUTF8() => Steamworks.Utility.Utf8NoBom.GetString( DebugMsg, 0, System.Array.IndexOf<byte>( DebugMsg, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)] // byte[] m_debugMsg
 		internal byte[] DebugMsg; // m_debugMsg char [256]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamRelayNetworkStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamRelayNetworkStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamRelayNetworkStatus;
 		#endregion
 	}
 	
@@ -2925,8 +2925,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSClientApprove_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSClientApprove;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSClientApprove;
 		#endregion
 	}
 	
@@ -2935,14 +2935,14 @@ namespace Steamworks.Data
 	{
 		internal ulong SteamID; // m_SteamID CSteamID
 		internal DenyReason DenyReason; // m_eDenyReason EDenyReason
-		internal string OptionalTextUTF8() => Steamworks.Utility.Utf8NoBom.GetString( OptionalText, 0, System.Array.IndexOf<byte>( OptionalText, 0 ) );
+		internal readonly string OptionalTextUTF8() => Steamworks.Utility.Utf8NoBom.GetString( OptionalText, 0, System.Array.IndexOf<byte>( OptionalText, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)] // byte[] m_rgchOptionalText
 		internal byte[] OptionalText; // m_rgchOptionalText char [128]
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSClientDeny_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSClientDeny;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSClientDeny;
 		#endregion
 	}
 	
@@ -2954,8 +2954,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSClientKick_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSClientKick;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSClientKick;
 		#endregion
 	}
 	
@@ -2963,7 +2963,7 @@ namespace Steamworks.Data
 	internal struct GSClientAchievementStatus_t : ICallbackData
 	{
 		internal ulong SteamID; // m_SteamID uint64
-		internal string PchAchievementUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PchAchievement, 0, System.Array.IndexOf<byte>( PchAchievement, 0 ) );
+		internal readonly string PchAchievementUTF8() => Steamworks.Utility.Utf8NoBom.GetString( PchAchievement, 0, System.Array.IndexOf<byte>( PchAchievement, 0 ) );
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 128)] // byte[] m_pchAchievement
 		internal byte[] PchAchievement; // m_pchAchievement char [128]
 		[MarshalAs(UnmanagedType.I1)]
@@ -2971,8 +2971,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSClientAchievementStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSClientAchievementStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSClientAchievementStatus;
 		#endregion
 	}
 	
@@ -2983,8 +2983,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSPolicyResponse_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSPolicyResponse;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSPolicyResponse;
 		#endregion
 	}
 	
@@ -2998,8 +2998,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSGameplayStats_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSGameplayStats;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSGameplayStats;
 		#endregion
 	}
 	
@@ -3015,8 +3015,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSClientGroupStatus_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSClientGroupStatus;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSClientGroupStatus;
 		#endregion
 	}
 	
@@ -3034,8 +3034,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSReputation_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSReputation;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSReputation;
 		#endregion
 	}
 	
@@ -3046,8 +3046,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(AssociateWithClanResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.AssociateWithClanResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.AssociateWithClanResult;
 		#endregion
 	}
 	
@@ -3062,8 +3062,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(ComputeNewPlayerCompatibilityResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.ComputeNewPlayerCompatibilityResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.ComputeNewPlayerCompatibilityResult;
 		#endregion
 	}
 	
@@ -3075,8 +3075,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSStatsReceived_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSStatsReceived;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSStatsReceived;
 		#endregion
 	}
 	
@@ -3088,8 +3088,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSStatsStored_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSStatsStored;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSStatsStored;
 		#endregion
 	}
 	
@@ -3100,8 +3100,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(GSStatsUnloaded_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.GSStatsUnloaded;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.GSStatsUnloaded;
 		#endregion
 	}
 	
@@ -3116,8 +3116,8 @@ namespace Steamworks.Data
 		
 		#region SteamCallback
 		public static int _datasize = System.Runtime.InteropServices.Marshal.SizeOf( typeof(SteamNetworkingFakeIPResult_t) );
-		public int DataSize => _datasize;
-		public CallbackType CallbackType => CallbackType.SteamNetworkingFakeIPResult;
+		public readonly int DataSize => _datasize;
+		public readonly CallbackType CallbackType => CallbackType.SteamNetworkingFakeIPResult;
 		#endregion
 	}
 	

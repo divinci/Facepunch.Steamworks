@@ -16,7 +16,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Tags a user as being visible in the screenshot
 		/// </summary>
-		public bool TagUser( SteamId user )
+		public readonly bool TagUser( SteamId user )
 		{
 			return SteamScreenshots.Internal.TagUser( Value, user );
 		}
@@ -24,12 +24,12 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sets the location of the screenshot.
 		/// </summary>
-		public bool SetLocation( string location )
+		public readonly bool SetLocation( string location )
 		{
 			return SteamScreenshots.Internal.SetLocation( Value, location );
 		}
 
-		public bool TagPublishedFile( PublishedFileId file )
+		public readonly bool TagPublishedFile( PublishedFileId file )
 		{
 			return SteamScreenshots.Internal.TagPublishedFile( Value, file );
 		}

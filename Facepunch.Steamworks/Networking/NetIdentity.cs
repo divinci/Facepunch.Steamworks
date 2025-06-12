@@ -31,13 +31,13 @@ namespace Steamworks.Data
 		}
 
 
-		public bool IsSteamId => type == IdentityType.SteamID;
-		public bool IsIpAddress => type == IdentityType.IPAddress;
+		public readonly bool IsSteamId => type == IdentityType.SteamID;
+		public readonly bool IsIpAddress => type == IdentityType.IPAddress;
 
 		/// <summary>
 		/// Return true if this identity is localhost
 		/// </summary>
-		public bool IsLocalHost
+		public static bool IsLocalHost
 		{
 			get
 			{
@@ -79,7 +79,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Returns NULL if we're not a SteamId
 		/// </summary>
-		public SteamId SteamId
+		public readonly SteamId SteamId
 		{
 			get
 			{
@@ -92,7 +92,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Returns NULL if we're not a NetAddress
 		/// </summary>
-		public NetAddress Address
+		public readonly NetAddress Address
 		{
 			get
 			{
@@ -107,7 +107,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// We override tostring to provide a sensible representation
 		/// </summary>
-		public override string ToString()
+		public override readonly string ToString()
 		{
 			var id = this;
 			SteamNetworkingUtils.Internal.SteamNetworkingIdentity_ToString( ref id, out var str );

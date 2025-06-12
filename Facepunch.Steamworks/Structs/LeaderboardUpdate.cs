@@ -8,7 +8,7 @@ namespace Steamworks.Data
 		public bool Changed;
 		public int NewGlobalRank;
 		public int OldGlobalRank;
-		public int RankChange => NewGlobalRank - OldGlobalRank;
+		public readonly int RankChange => NewGlobalRank - OldGlobalRank;
 
 		internal static LeaderboardUpdate From( LeaderboardScoreUploaded_t e ) =>
 			new LeaderboardUpdate

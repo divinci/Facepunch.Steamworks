@@ -17,7 +17,7 @@ namespace Steamworks
 			Expired = expired;
 		}
 
-		public int ItemCount
+		public readonly int ItemCount
 		{
 			get
 			{
@@ -34,7 +34,7 @@ namespace Steamworks
 		/// Checks whether an inventory result handle belongs to the specified Steam ID.
 		/// This is important when using Deserialize, to verify that a remote player is not pretending to have a different user's inventory
 		/// </summary>
-		public bool BelongsTo( SteamId steamId )
+		public readonly bool BelongsTo( SteamId steamId )
 		{
 			return SteamInventory.Internal.CheckResultSteamID( _id, steamId );
 		}
@@ -65,7 +65,7 @@ namespace Steamworks
 			return items;			
 		}
 
-		public void Dispose()
+		public readonly void Dispose()
 		{
 			if ( _id.Value == -1 ) return;
 
@@ -97,7 +97,7 @@ namespace Steamworks
 		/// Results have a built-in timestamp which will be considered "expired" after an hour has elapsed.See DeserializeResult
 		/// for expiration handling.
 		/// </summary>
-		public unsafe byte[] Serialize()
+		public readonly unsafe byte[] Serialize()
 		{
 			uint size = 0;
 

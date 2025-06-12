@@ -26,7 +26,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// The Port. This is redundant documentation.
 		/// </summary>
-		public ushort Port => port;
+		public readonly ushort Port => port;
 
 		/// <summary>
 		/// Any IP, specific port
@@ -89,7 +89,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Return true if the IP is ::0.  (Doesn't check port.)
 		/// </summary>
-		public bool IsIPv6AllZeros
+		public readonly bool IsIPv6AllZeros
 		{
 			get
 			{
@@ -101,7 +101,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Return true if IP is mapped IPv4
 		/// </summary>
-		public bool IsIPv4
+		public readonly bool IsIPv4
 		{
 			get
 			{
@@ -113,7 +113,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Return true if IP is a fake IPv4 for Steam Datagram Relay
 		/// </summary>
-		public bool IsFakeIPv4
+		public readonly bool IsFakeIPv4
 		{
 			get
 			{
@@ -125,7 +125,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Return true if this identity is localhost.  (Either IPv6 ::1, or IPv4 127.0.0.1)
 		/// </summary>
-		public bool IsLocalHost
+		public readonly bool IsLocalHost
 		{
 			get
 			{
@@ -157,7 +157,7 @@ namespace Steamworks.Data
 			}
 		}
 
-		public override string ToString()
+		public override readonly string ToString()
 		{
 			using var ptr = Helpers.TakeMemory();
 			var self = this;

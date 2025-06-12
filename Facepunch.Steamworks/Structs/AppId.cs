@@ -13,7 +13,7 @@ namespace Steamworks
 	{
 		public uint Value;
 
-		public override string ToString() => Value.ToString();
+		public override readonly string ToString() => Value.ToString();
 
 		public static implicit operator AppId( uint value )
 		{

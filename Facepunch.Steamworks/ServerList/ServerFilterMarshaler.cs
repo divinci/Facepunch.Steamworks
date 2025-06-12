@@ -13,7 +13,7 @@ internal struct ServerFilterMarshaler : IDisposable
 	private IntPtr _itemsPtr;
 
 	public int Count { get; private set; }
-	public IntPtr Pointer => _arrayPtr;
+	public readonly IntPtr Pointer => _arrayPtr;
 
 	public ServerFilterMarshaler( MatchMakingKeyValuePair[] filters )
 	{

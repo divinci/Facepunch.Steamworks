@@ -15,10 +15,10 @@ namespace Steamworks.Data
 	{
 		public uint Id { get; set; }
 
-		public bool Equals( Connection other ) => Id == other.Id;
-		public override bool Equals( object obj ) => obj is Connection other && Id == other.Id;
-		public override int GetHashCode() => Id.GetHashCode();
-		public override string ToString() => Id.ToString();
+		public readonly bool Equals( Connection other ) => Id == other.Id;
+		public override readonly bool Equals( object obj ) => obj is Connection other && Id == other.Id;
+		public override readonly int GetHashCode() => Id.GetHashCode();
+		public override readonly string ToString() => Id.ToString();
 		public static implicit operator Connection( uint value ) => new Connection() { Id = value };
 		public static implicit operator uint( Connection value ) => value.Id;
 		public static bool operator ==( Connection value1, Connection value2 ) => value1.Equals( value2 );
@@ -27,7 +27,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Accept an incoming connection that has been received on a listen socket.
 		/// </summary>
-		public Result Accept()
+		public readonly Result Accept()
 		{
 			return SteamNetworkingSockets.Internal.AcceptConnection( this );
 		}
@@ -36,7 +36,7 @@ namespace Steamworks.Data
 		/// Disconnects from the remote host and invalidates the connection handle. Any unread data on the connection is discarded..
 		/// reasonCode is defined and used by you.
 		/// </summary>
-		public bool Close( bool linger = false, int reasonCode = 0, string debugString = "Closing Connection" )
+		public readonly bool Close( bool linger = false, int reasonCode = 0, string debugString = "Closing Connection" )
 		{
 			return SteamNetworkingSockets.Internal.CloseConnection( this, reasonCode, debugString, linger );
 		}
@@ -44,7 +44,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Get/Set connection user data
 		/// </summary>
-		public long UserData
+		public readonly long UserData
 		{
 			get => SteamNetworkingSockets.Internal.GetConnectionUserData( this );
 			set => SteamNetworkingSockets.Internal.SetConnectionUserData( this, value );
@@ -53,7 +53,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// A name for the connection, used mostly for debugging
 		/// </summary>
-		public string ConnectionName
+		public readonly string ConnectionName
 		{
 			get
 			{
@@ -69,7 +69,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// This is the best version to use.
 		/// </summary>
-		public unsafe Result SendMessage( IntPtr ptr, int size, SendType sendType = SendType.Reliable, ushort laneIndex = 0 )
+		public readonly unsafe Result SendMessage( IntPtr ptr, int size, SendType sendType = SendType.Reliable, ushort laneIndex = 0 )
 		{
 			if ( ptr == IntPtr.Zero )
 				throw new ArgumentNullException( nameof( ptr ) );
@@ -132,14 +132,14 @@ namespace Steamworks.Data
 		/// Flush any messages waiting on the Nagle timer and send them at the next transmission 
 		/// opportunity (often that means right now).
 		/// </summary>
-		public Result Flush() => SteamNetworkingSockets.Internal.FlushMessagesOnConnection( this );
+		public readonly Result Flush() => SteamNetworkingSockets.Internal.FlushMessagesOnConnection( this );
 
 		/// <summary>
 		/// Returns detailed connection stats in text format.  Useful
 		/// for dumping to a log, etc.
 		/// </summary>
 		/// <returns>Plain text connection info</returns>
-		public string DetailedStatus()
+		public readonly string DetailedStatus()
 		{
 			if ( SteamNetworkingSockets.Internal.GetDetailedConnectionStatus( this, out var strVal ) != 0 )
 				return null;
@@ -150,7 +150,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Returns a small set of information about the real-time state of the connection.
 		/// </summary>
-		public ConnectionStatus QuickStatus()
+		public readonly ConnectionStatus QuickStatus()
 		{
 			ConnectionStatus connectionStatus = default( ConnectionStatus );
 
@@ -163,7 +163,7 @@ namespace Steamworks.Data
 		/// Configure multiple outbound messages streams ("lanes") on a connection, and
 		/// control head-of-line blocking between them.
 		/// </summary>
-		public Result ConfigureConnectionLanes( int[] lanePriorities, ushort[] laneWeights )
+		public readonly Result ConfigureConnectionLanes( int[] lanePriorities, ushort[] laneWeights )
 		{
 			return SteamNetworkingSockets.Internal.ConfigureConnectionLanes( this, lanePriorities.Length, lanePriorities, laneWeights );
 		}

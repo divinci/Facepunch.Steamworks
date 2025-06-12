@@ -155,7 +155,7 @@ namespace Steamworks
 			}
 		}
 
-		static byte[] readBuffer = new byte[1024*128];
+		static readonly byte[] readBuffer = new byte[1024*128];
 
 		/// <summary>
 		/// Reads the voice data and returns the number of bytes written.

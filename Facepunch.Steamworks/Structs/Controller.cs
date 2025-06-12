@@ -13,28 +13,28 @@ namespace Steamworks
 			this.Handle = inputHandle_t;
 		}
 
-		public ulong Id => Handle.Value;
-		public InputType InputType => SteamInput.Internal.GetInputTypeForHandle( Handle );
+		public readonly ulong Id => Handle.Value;
+		public readonly InputType InputType => SteamInput.Internal.GetInputTypeForHandle( Handle );
 
 		/// <summary>
 		/// Reconfigure the controller to use the specified action set (ie 'Menu', 'Walk' or 'Drive')
 		/// This is cheap, and can be safely called repeatedly. It's often easier to repeatedly call it in
 		/// our state loops, instead of trying to place it in all of your state transitions.
 		/// </summary>
-		public string ActionSet
+		public readonly string ActionSet
 		{
 			set => SteamInput.Internal.ActivateActionSet( Handle, SteamInput.Internal.GetActionSetHandle( value ) );
 		}
 
-		public void DeactivateLayer( string layer ) => SteamInput.Internal.DeactivateActionSetLayer( Handle, SteamInput.Internal.GetActionSetHandle( layer ) );
-		public void ActivateLayer( string layer ) => SteamInput.Internal.ActivateActionSetLayer( Handle, SteamInput.Internal.GetActionSetHandle( layer ) );
-		public void ClearLayers() => SteamInput.Internal.DeactivateAllActionSetLayers( Handle );
+		public readonly void DeactivateLayer( string layer ) => SteamInput.Internal.DeactivateActionSetLayer( Handle, SteamInput.Internal.GetActionSetHandle( layer ) );
+		public readonly void ActivateLayer( string layer ) => SteamInput.Internal.ActivateActionSetLayer( Handle, SteamInput.Internal.GetActionSetHandle( layer ) );
+		public readonly void ClearLayers() => SteamInput.Internal.DeactivateAllActionSetLayers( Handle );
 
 
 		/// <summary>
 		/// Returns the current state of the supplied digital game action
 		/// </summary>
-		public DigitalState GetDigitalState( string actionName )
+		public readonly DigitalState GetDigitalState( string actionName )
 		{
 			return SteamInput.Internal.GetDigitalActionData( Handle, SteamInput.GetDigitalActionHandle( actionName ) );
 		}
@@ -42,7 +42,7 @@ namespace Steamworks
 		/// <summary>
 		/// Returns the current state of these supplied analog game action
 		/// </summary>
-		public AnalogState GetAnalogState( string actionName )
+		public readonly AnalogState GetAnalogState( string actionName )
 		{
 			return SteamInput.Internal.GetAnalogActionData( Handle, SteamInput.GetAnalogActionHandle( actionName ) );
 		}
@@ -55,7 +55,7 @@ namespace Steamworks
 		public static bool operator !=( Controller a, Controller b ) => !(a == b);
 		public override bool Equals( object p ) => this.Equals( (Controller)p );
 		public override int GetHashCode() => Handle.GetHashCode();
-		public bool Equals( Controller p ) => p.Handle == Handle;
+		public readonly bool Equals( Controller p ) => p.Handle == Handle;
 	}
 
 	[StructLayout( LayoutKind.Sequential, Pack = 1 )]
@@ -65,7 +65,7 @@ namespace Steamworks
 		public float X; // x float
 		public float Y; // y float
 		internal byte BActive; // bActive byte
-		public bool Active => BActive != 0;
+		public readonly bool Active => BActive != 0;
 	}
 
 	[StructLayout( LayoutKind.Sequential, Pack = 1 )]
@@ -91,7 +91,7 @@ namespace Steamworks
 		[MarshalAs( UnmanagedType.I1 )]
 		internal byte BActive; // bActive byte
 
-		public bool Pressed => BState != 0;
-		public bool Active => BActive != 0;
+		public readonly bool Pressed => BState != 0;
+		public readonly bool Active => BActive != 0;
 	}
 }

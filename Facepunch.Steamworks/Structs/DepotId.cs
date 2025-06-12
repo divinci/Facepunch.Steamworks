@@ -25,6 +25,6 @@ namespace Steamworks.Data
 			return value.Value;
 		}
 
-		public override string ToString() => Value.ToString();
+		public override readonly string ToString() => Value.ToString();
 	}
 }

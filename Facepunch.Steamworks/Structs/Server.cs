@@ -95,7 +95,7 @@ namespace Steamworks.Data
 		/// Add this server to our history list
 		/// If we're already in the history list, weill set the last played time to now
 		/// </summary>
-		public void AddToHistory()
+		public readonly void AddToHistory()
 		{
 			SteamMatchmaking.Internal.AddFavoriteGame( SteamClient.AppId, AddressRaw, (ushort)ConnectionPort, (ushort)QueryPort, k_unFavoriteFlagHistory, (uint)Epoch.Current );
 		}
@@ -103,7 +103,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// If this server responds to source engine style queries, we'll be able to get a list of rules here
 		/// </summary>
-		public async Task<Dictionary<string, string>> QueryRulesAsync()
+		public async readonly Task<Dictionary<string, string>> QueryRulesAsync()
 		{
 			return await SourceServerQuery.GetRules( this );
 		}
@@ -111,7 +111,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Remove this server from our history list
 		/// </summary>
-		public void RemoveFromHistory()
+		public readonly void RemoveFromHistory()
 		{
 			SteamMatchmaking.Internal.RemoveFavoriteGame( SteamClient.AppId, AddressRaw, (ushort)ConnectionPort, (ushort)QueryPort, k_unFavoriteFlagHistory );
 		}
@@ -119,7 +119,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Add this server to our favourite list
 		/// </summary>
-		public void AddToFavourites()
+		public readonly void AddToFavourites()
 		{
 			SteamMatchmaking.Internal.AddFavoriteGame( SteamClient.AppId, AddressRaw, (ushort)ConnectionPort, (ushort)QueryPort, k_unFavoriteFlagFavorite, (uint)Epoch.Current );
 		}
@@ -127,7 +127,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Remove this server from our favourite list
 		/// </summary>
-		public void RemoveFromFavourites()
+		public readonly void RemoveFromFavourites()
 		{
 			SteamMatchmaking.Internal.RemoveFavoriteGame( SteamClient.AppId, AddressRaw, (ushort)ConnectionPort, (ushort)QueryPort, k_unFavoriteFlagFavorite );
 		}
@@ -137,7 +137,7 @@ namespace Steamworks.Data
 			return this.GetHashCode() == other.GetHashCode();
 		}
 
-		public override int GetHashCode()
+		public override readonly int GetHashCode()
 		{
 			return Address.GetHashCode() + SteamId.GetHashCode() + ConnectionPort.GetHashCode() + QueryPort.GetHashCode();
 		}

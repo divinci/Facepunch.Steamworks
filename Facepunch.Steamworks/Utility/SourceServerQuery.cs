@@ -122,7 +122,7 @@ namespace Steamworks
 						throw new System.Exception( "Invalid Header" );
 					}
 
-					if ( packets == null ) packets = new byte[packetCount][];
+					packets ??= new byte[packetCount][];
 
 					var data = new byte[buffer.Length - br.BaseStream.Position];
 					Buffer.BlockCopy( buffer, (int)br.BaseStream.Position, data, 0, data.Length );

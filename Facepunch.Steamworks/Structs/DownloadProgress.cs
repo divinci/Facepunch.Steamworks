@@ -29,6 +29,6 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Gets the amount of bytes left that need to be downloaded.
 		/// </summary>
-		public ulong BytesRemaining => BytesTotal - BytesDownloaded;
+		public readonly ulong BytesRemaining => BytesTotal - BytesDownloaded;
 	}
 }

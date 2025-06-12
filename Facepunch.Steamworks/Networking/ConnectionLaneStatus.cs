@@ -19,16 +19,16 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Number of bytes unreliable data pending to be sent. This is data that you have recently requested to be sent but has not yet actually been put on the wire.
 		/// </summary>
-		public int PendingUnreliable => cbPendingUnreliable;
+		public readonly int PendingUnreliable => cbPendingUnreliable;
 
 		/// <summary>
 		/// Number of bytes reliable data pending to be sent. This is data that you have recently requested to be sent but has not yet actually been put on the wire.
 		/// </summary>
-		public int PendingReliable => cbPendingReliable;
+		public readonly int PendingReliable => cbPendingReliable;
 
 		/// <summary>
 		/// Number of bytes of reliable data that has been placed the wire, but for which we have not yet received an acknowledgment, and thus we may have to re-transmit.
 		/// </summary>
-		public int SentUnackedReliable => cbSentUnackedReliable;
+		public readonly int SentUnackedReliable => cbSentUnackedReliable;
 	}
 }

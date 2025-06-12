@@ -14,20 +14,20 @@ namespace Steamworks.Data
 		/// <summary>
 		/// the name of a leaderboard
 		/// </summary>
-		public string Name => SteamUserStats.Internal.GetLeaderboardName( Id );
-		public LeaderboardSort Sort => SteamUserStats.Internal.GetLeaderboardSortMethod( Id );
-		public LeaderboardDisplay Display => SteamUserStats.Internal.GetLeaderboardDisplayType( Id );
-		public int EntryCount => SteamUserStats.Internal.GetLeaderboardEntryCount(Id);
+		public readonly string Name => SteamUserStats.Internal.GetLeaderboardName( Id );
+		public readonly LeaderboardSort Sort => SteamUserStats.Internal.GetLeaderboardSortMethod( Id );
+		public readonly LeaderboardDisplay Display => SteamUserStats.Internal.GetLeaderboardDisplayType( Id );
+		public readonly int EntryCount => SteamUserStats.Internal.GetLeaderboardEntryCount(Id);
 
-		static int[] detailsBuffer = new int[64];
-		static int[] noDetails = Array.Empty<int>();
+		static readonly int[] detailsBuffer = new int[64];
+		static readonly int[] noDetails = Array.Empty<int>();
 
 		/// <summary>
 		/// Submit your score and replace your old score even if it was better
 		/// </summary>
-		public async Task<LeaderboardUpdate?> ReplaceScore( int score, int[] details = null )
+		public async readonly Task<LeaderboardUpdate?> ReplaceScore( int score, int[] details = null )
 		{
-			if ( details == null ) details = noDetails;
+			details ??= noDetails;
 
 			var r = await SteamUserStats.Internal.UploadLeaderboardScore( Id, LeaderboardUploadScoreMethod.ForceUpdate, score, details, details.Length );
 			if ( !r.HasValue ) return null;
@@ -38,9 +38,9 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Submit your new score, but won't replace your high score if it's lower
 		/// </summary>
-		public async Task<LeaderboardUpdate?> SubmitScoreAsync( int score, int[] details = null )
+		public async readonly Task<LeaderboardUpdate?> SubmitScoreAsync( int score, int[] details = null )
 		{
-			if ( details == null ) details = noDetails;
+			details ??= noDetails;
 
 			var r = await SteamUserStats.Internal.UploadLeaderboardScore( Id, LeaderboardUploadScoreMethod.KeepBest, score, details, details.Length );
 			if ( !r.HasValue ) return null;
@@ -51,7 +51,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Attaches a piece of user generated content the user's entry on a leaderboard
 		/// </summary>
-		public async Task<Result> AttachUgc( Ugc file )
+		public async readonly Task<Result> AttachUgc( Ugc file )
 		{
 			var r = await SteamUserStats.Internal.AttachLeaderboardUGC( Id, file.Handle );
 			if ( !r.HasValue ) return Result.Fail;
@@ -116,7 +116,7 @@ namespace Steamworks.Data
 		}
 
 		#region util
-		internal async Task<LeaderboardEntry[]> LeaderboardResultToEntries( LeaderboardScoresDownloaded_t r )
+		internal async readonly Task<LeaderboardEntry[]> LeaderboardResultToEntries( LeaderboardScoresDownloaded_t r )
 		{
 			if ( r.CEntryCount <= 0 )
 				return null;

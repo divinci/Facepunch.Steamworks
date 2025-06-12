@@ -13,8 +13,8 @@ namespace Steamworks.Ugc
 	{
 		PublishedFileId fileId;
 
-		bool creatingNew;
-		WorkshopFileType creatingType;
+		readonly bool creatingNew;
+		readonly WorkshopFileType creatingType;
 		AppId consumerAppId;
 
 		internal Editor( WorkshopFileType filetype ) : this()
@@ -85,7 +85,7 @@ namespace Steamworks.Ugc
 
 		public Editor WithTag( string tag )
 		{
-			if ( Tags == null ) Tags = new List<string>();
+			Tags ??= new List<string>();
 
 			Tags.Add( tag );
 
@@ -101,8 +101,7 @@ namespace Steamworks.Ugc
 		/// </summary>
 		public Editor AddKeyValueTag(string key, string value)
 		{
-			if (KeyValueTags == null) 
-				KeyValueTags = new Dictionary<string, List<string>>();
+			KeyValueTags ??= new Dictionary<string, List<string>>();
 
 			if ( KeyValueTags.TryGetValue( key, out var list ) )
 				list.Add( value );
@@ -119,8 +118,7 @@ namespace Steamworks.Ugc
 		/// </summary>
 		public Editor RemoveKeyValueTags( string key )
 		{
-			if ( KeyValueTagsToRemove == null )
-				KeyValueTagsToRemove = new HashSet<string>();
+			KeyValueTagsToRemove ??= new HashSet<string>();
 
 			KeyValueTagsToRemove.Add( key );
 			return this;
@@ -216,8 +214,7 @@ namespace Steamworks.Ugc
 
 				result.Result = Steamworks.Result.Fail;
 
-				if ( ChangeLog == null )
-					ChangeLog = "";
+				ChangeLog ??= "";
 
 			   var updating = SteamUGC.Internal.SubmitItemUpdate( handle, ChangeLog );
 
@@ -287,7 +284,7 @@ namespace Steamworks.Ugc
 
 	public struct PublishResult
 	{
-		public bool Success => Result == Steamworks.Result.OK;
+		public readonly bool Success => Result == Steamworks.Result.OK;
 
 		public Steamworks.Result Result;
 		public PublishedFileId FileId;

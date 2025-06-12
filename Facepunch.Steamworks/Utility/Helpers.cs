@@ -56,7 +56,7 @@ namespace Steamworks
 		}
 
 
-		private static byte[][] BufferPool = new byte[4][];
+		private static readonly byte[][] BufferPool = new byte[4][];
 		private static int BufferPoolIndex;
 
 		/// <summary>

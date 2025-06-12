@@ -54,8 +54,7 @@ namespace Steamworks.Data
 			if ( key.Length > SteamMatchmaking.MaxLobbyKeyLength )
 				throw new System.ArgumentException( $"Key length is longer than {SteamMatchmaking.MaxLobbyKeyLength}", nameof( key ) );
 
-			if ( stringFilters == null )
-				stringFilters = new Dictionary<string, string>();
+			stringFilters ??= new Dictionary<string, string>();
 
 			stringFilters.Add( key, value );
 
@@ -113,8 +112,7 @@ namespace Steamworks.Data
 			if ( key.Length > SteamMatchmaking.MaxLobbyKeyLength )
 				throw new System.ArgumentException( $"Key length is longer than {SteamMatchmaking.MaxLobbyKeyLength}", nameof( key ) );
 
-			if ( numericalFilters == null )
-				numericalFilters = new List<NumericalFilter>();
+			numericalFilters ??= new List<NumericalFilter>();
 
 			numericalFilters.Add( new NumericalFilter( key, value, compare ) );
 		}
@@ -135,8 +133,7 @@ namespace Steamworks.Data
 			if ( key.Length > SteamMatchmaking.MaxLobbyKeyLength )
 				throw new System.ArgumentException( $"Key length is longer than {SteamMatchmaking.MaxLobbyKeyLength}", nameof( key ) );
 
-			if ( nearValFilters == null )
-				nearValFilters = new Dictionary<string, int>();
+			nearValFilters ??= new Dictionary<string, int>();
 
 			nearValFilters.Add( key, value );
 
@@ -172,7 +169,7 @@ namespace Steamworks.Data
 
 		#endregion
 
-		void ApplyFilters()
+		readonly void ApplyFilters()
 		{
 			if ( distance.HasValue )
 			{

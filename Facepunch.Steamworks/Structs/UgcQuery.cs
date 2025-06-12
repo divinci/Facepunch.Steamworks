@@ -184,26 +184,26 @@ namespace Steamworks.Ugc
 
 		public QueryType WithTag( string tag )
 		{
-			if ( requiredTags == null ) requiredTags = new List<string>();
+			requiredTags ??= new List<string>();
 			requiredTags.Add( tag );
 			return this;
 		}
 
 		public QueryType AddRequiredKeyValueTag(string key, string value)
 		{
-			if (requiredKv == null) requiredKv = new Dictionary<string, string>();
+			requiredKv ??= new Dictionary<string, string>();
 			requiredKv.Add(key, value);
 			return this;
 		}
 
 		public QueryType WithoutTag( string tag )
 		{
-			if ( excludedTags == null ) excludedTags = new List<string>();
+			excludedTags ??= new List<string>();
 			excludedTags.Add( tag );
 			return this;
 		}
 
-		void ApplyConstraints( UGCQueryHandle_t handle )
+		readonly void ApplyConstraints( UGCQueryHandle_t handle )
 		{
 			if ( requiredTags != null )
 			{
@@ -262,7 +262,7 @@ namespace Steamworks.Ugc
 	    uint? WantsReturnPlaytimeStats;
 	    public QueryType WithPlaytimeStats(uint unDays) { WantsReturnPlaytimeStats = unDays; return this; }
 
-        private void ApplyReturns(UGCQueryHandle_t handle)
+        private readonly void ApplyReturns(UGCQueryHandle_t handle)
 	    {
 	        if (WantsReturnOnlyIDs.HasValue)
 	        {

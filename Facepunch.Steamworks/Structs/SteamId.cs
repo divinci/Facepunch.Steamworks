@@ -23,10 +23,10 @@ namespace Steamworks
 			return value.Value;
 		}
 
-		public override string ToString() => Value.ToString();
+		public override readonly string ToString() => Value.ToString();
 
-		public uint AccountId => (uint) (Value & 0xFFFFFFFFul);
+		public readonly uint AccountId => (uint) (Value & 0xFFFFFFFFul);
 
-		public bool IsValid => Value != default;
+		public readonly bool IsValid => Value != default;
 	}
 }

@@ -42,6 +42,10 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
+  
+	<ItemGroup>
+	  <Folder Include="lib\" />
+	</ItemGroup>
 
 	<Import Project="Facepunch.Steamworks.targets" />
 

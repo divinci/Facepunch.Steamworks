@@ -34,7 +34,7 @@ namespace Steamworks.Ugc
 			return a;			
 		}
 
-		public void Dispose()
+		public readonly void Dispose()
 		{
 			foreach ( var x in NativeStrings )
 				Marshal.FreeHGlobal( x );

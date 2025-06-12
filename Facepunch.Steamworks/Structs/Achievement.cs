@@ -18,12 +18,12 @@ namespace Steamworks.Data
 			Value = name;
 		}
 
-		public override string ToString() => Value;
+		public override readonly string ToString() => Value;
 
 		/// <summary>
 		/// Gets whether or not the achievement has been unlocked.
 		/// </summary>
-		public bool State
+		public readonly bool State
 		{
 			get
 			{
@@ -36,23 +36,23 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Gets the identifier of the achievement. This is the "API Name" on Steamworks.
 		/// </summary>
-		public string Identifier => Value;
+		public readonly string Identifier => Value;
 
 		/// <summary>
 		/// Gets the display name of the achievement.
 		/// </summary>
-		public string Name => SteamUserStats.Internal.GetAchievementDisplayAttribute( Value, "name" );
+		public readonly string Name => SteamUserStats.Internal.GetAchievementDisplayAttribute( Value, "name" );
 
 		/// <summary>
 		/// Gets the description of the achievement.
 		/// </summary>
-		public string Description => SteamUserStats.Internal.GetAchievementDisplayAttribute( Value, "desc" );
+		public readonly string Description => SteamUserStats.Internal.GetAchievementDisplayAttribute( Value, "desc" );
 
 
 		/// <summary>
 		/// If <see cref="State"/> is <see langword="true"/>, this value represents the time that the achievement was unlocked.
 		/// </summary>
-		public DateTime? UnlockTime
+		public readonly DateTime? UnlockTime
 		{
 			get
 			{
@@ -70,7 +70,7 @@ namespace Steamworks.Data
 		/// Gets the icon of the achievement. This can return a null image even though the image exists if the image
 		/// hasn't been downloaded by Steam yet. You should use <see cref="GetIconAsync(int)"/> if you want to wait for the image to be downloaded.
 		/// </summary>
-		public Image? GetIcon()
+		public readonly Image? GetIcon()
 		{
 			return SteamUtils.GetImage( SteamUserStats.Internal.GetAchievementIcon( Value ) );
 		}
@@ -122,7 +122,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Gets a decimal (0-1) representing the global amount of users who have unlocked the specified achievement, or -1 if no data available.
 		/// </summary>
-		public float GlobalUnlocked
+		public readonly float GlobalUnlocked
 		{
 			get
 			{
@@ -138,7 +138,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Unlock this achievement.
 		/// </summary>
-		public bool Trigger( bool apply = true )
+		public readonly bool Trigger( bool apply = true )
 		{
 			var r = SteamUserStats.Internal.SetAchievement( Value );
 
@@ -153,7 +153,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Reset this achievement to be locked.
 		/// </summary>
-		public bool Clear()
+		public readonly bool Clear()
 		{
 			return SteamUserStats.Internal.ClearAchievement( Value );
 		}

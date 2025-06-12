@@ -14,8 +14,8 @@ namespace Steamworks
 	internal struct CallResult<T> : INotifyCompletion where T : struct, ICallbackData
 	{
 		SteamAPICall_t call;
-		ISteamUtils utils;
-		bool server;
+		readonly ISteamUtils utils;
+		readonly bool server;
 
 		public CallResult( SteamAPICall_t call, bool server )
 		{
@@ -24,8 +24,7 @@ namespace Steamworks
 
 			utils = (server ? SteamUtils.InterfaceServer : SteamUtils.InterfaceClient) as ISteamUtils;
 
-			if ( utils == null )
-				utils = SteamUtils.Interface as ISteamUtils;
+			utils ??= SteamUtils.Interface as ISteamUtils;
 		}
 
 		/// <summary>
@@ -44,7 +43,7 @@ namespace Steamworks
 		/// <summary>
 		/// Gets the result. This is called internally by the async shit.
 		/// </summary>
-		public T? GetResult()
+		public readonly T? GetResult()
 		{
 			bool failed = false;
 			if ( !utils.IsAPICallCompleted( call, ref failed ) || failed )
@@ -75,7 +74,7 @@ namespace Steamworks
 		/// <summary>
 		/// Return true if complete or failed
 		/// </summary>
-		public bool IsCompleted
+		public readonly bool IsCompleted
 		{
 			get
 			{
@@ -90,7 +89,7 @@ namespace Steamworks
 		/// <summary>
 		/// This is what makes this struct awaitable
 		/// </summary>
-		internal CallResult<T> GetAwaiter()
+		internal readonly CallResult<T> GetAwaiter()
 		{
 			return this;
 		}

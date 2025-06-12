@@ -112,7 +112,7 @@ namespace Steamworks.Ugc
 			}
 		}
 
-		private ulong GetStat( uint index, ItemStatistic stat )
+		private readonly ulong GetStat( uint index, ItemStatistic stat )
 		{
 			ulong val = 0;
 

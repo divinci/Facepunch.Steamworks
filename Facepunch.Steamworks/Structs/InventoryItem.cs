@@ -13,11 +13,11 @@ namespace Steamworks
 		internal ushort _quantity;
 		internal Dictionary<string, string> _properties;
 
-		public InventoryItemId Id => _id;
+		public readonly InventoryItemId Id => _id;
 
-		public InventoryDefId DefId => _def;
+		public readonly InventoryDefId DefId => _def;
 
-		public int Quantity => _quantity;
+		public readonly int Quantity => _quantity;
 
 		public InventoryDef Def => SteamInventory.FindDefinition( DefId );
 
@@ -25,25 +25,25 @@ namespace Steamworks
 		/// <summary>
 		/// Only available if the result set was created with the getproperties
 		/// </summary>
-		public Dictionary<string, string> Properties => _properties;
+		public readonly Dictionary<string, string> Properties => _properties;
 
 		/// <summary>
 		/// This item is account-locked and cannot be traded or given away. 
 		/// This is an item status flag which is permanently attached to specific item instances
 		/// </summary>
-		public bool IsNoTrade => _flags.HasFlag( SteamItemFlags.NoTrade );
+		public readonly bool IsNoTrade => _flags.HasFlag( SteamItemFlags.NoTrade );
 
 		/// <summary>
 		/// The item has been destroyed, traded away, expired, or otherwise invalidated. 
 		/// This is an action confirmation flag which is only set one time, as part of a result set.
 		/// </summary>
-		public bool IsRemoved => _flags.HasFlag( SteamItemFlags.Removed );
+		public readonly bool IsRemoved => _flags.HasFlag( SteamItemFlags.Removed );
 
 		/// <summary>
 		/// The item quantity has been decreased by 1 via ConsumeItem API. 
 		/// This is an action confirmation flag which is only set one time, as part of a result set.
 		/// </summary>
-		public bool IsConsumed => _flags.HasFlag( SteamItemFlags.Consumed );
+		public readonly bool IsConsumed => _flags.HasFlag( SteamItemFlags.Consumed );
 
 		/// <summary>
 		/// Consumes items from a user's inventory. If the quantity of the given item goes to zero, it is permanently removed.
@@ -173,6 +173,6 @@ namespace Steamworks
 		public static bool operator !=( InventoryItem a, InventoryItem b ) => a._id != b._id;
 		public override bool Equals( object p ) => this.Equals( (InventoryItem)p );
 		public override int GetHashCode() => _id.GetHashCode();
-		public bool Equals( InventoryItem p ) => p._id == _id;
+		public readonly bool Equals( InventoryItem p ) => p._id == _id;
 	}
 }

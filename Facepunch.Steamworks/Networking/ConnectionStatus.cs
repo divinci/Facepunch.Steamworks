@@ -27,51 +27,51 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Current ping (ms)
 		/// </summary>
-		public int Ping => ping;
+		public readonly int Ping => ping;
 
 		/// <summary>
 		/// Outgoing packets per second
 		/// </summary>
-		public float OutPacketsPerSec => outPacketsPerSec;
+		public readonly float OutPacketsPerSec => outPacketsPerSec;
 
 		/// <summary>
 		/// Outgoing bytes per second
 		/// </summary>
-		public float OutBytesPerSec => outBytesPerSec;
+		public readonly float OutBytesPerSec => outBytesPerSec;
 
 		/// <summary>
 		/// Incoming packets per second
 		/// </summary>
-		public float InPacketsPerSec => inPacketsPerSec;
+		public readonly float InPacketsPerSec => inPacketsPerSec;
 
 		/// <summary>
 		/// Incoming bytes per second
 		/// </summary>
-		public float InBytesPerSec => inBytesPerSec;
+		public readonly float InBytesPerSec => inBytesPerSec;
 
 		/// <summary>
 		/// Connection quality measured locally, 0...1 (percentage of packets delivered end-to-end in order).
 		/// </summary>
-		public float ConnectionQualityLocal => connectionQualityLocal;
+		public readonly float ConnectionQualityLocal => connectionQualityLocal;
 
 		/// <summary>
 		/// Packet delivery success rate as observed from remote host, 0...1 (percentage of packets delivered end-to-end in order).
 		/// </summary>
-		public float ConnectionQualityRemote => connectionQualityRemote;
+		public readonly float ConnectionQualityRemote => connectionQualityRemote;
 
 		/// <summary>
 		/// Number of bytes unreliable data pending to be sent. This is data that you have recently requested to be sent but has not yet actually been put on the wire.
 		/// </summary>
-		public int PendingUnreliable => cbPendingUnreliable;
+		public readonly int PendingUnreliable => cbPendingUnreliable;
 
 		/// <summary>
 		/// Number of bytes reliable data pending to be sent. This is data that you have recently requested to be sent but has not yet actually been put on the wire.
 		/// </summary>
-		public int PendingReliable => cbPendingReliable;
+		public readonly int PendingReliable => cbPendingReliable;
 
 		/// <summary>
 		/// Number of bytes of reliable data that has been placed the wire, but for which we have not yet received an acknowledgment, and thus we may have to re-transmit.
 		/// </summary>
-		public int SentUnackedReliable => cbSentUnackedReliable;
+		public readonly int SentUnackedReliable => cbSentUnackedReliable;
 	}
 }

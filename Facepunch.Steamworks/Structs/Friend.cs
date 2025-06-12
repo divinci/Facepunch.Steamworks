@@ -25,7 +25,7 @@ namespace Steamworks
 		/// <summary>
 		/// Returns true if this is the local user
 		/// </summary>
-		public bool IsMe => Id == SteamClient.SteamId;
+		public readonly bool IsMe => Id == SteamClient.SteamId;
 
 		/// <summary>
 		/// Return true if this is a friend
@@ -51,7 +51,7 @@ namespace Steamworks
 		/// Sometimes we don't know the user's name. This will wait until we have
 		/// downloaded the information on this user.
 		/// </summary>
-		public async Task RequestInfoAsync()
+		public async readonly Task RequestInfoAsync()
 		{
 			await SteamFriends.CacheUserInformationAsync( Id, true );
 		}
@@ -73,8 +73,8 @@ namespace Steamworks
 
 
 
-		public Relationship Relationship => SteamFriends.Internal.GetFriendRelationship( Id );
-		public FriendState State => SteamFriends.Internal.GetFriendPersonaState( Id );
+		public readonly Relationship Relationship => SteamFriends.Internal.GetFriendRelationship( Id );
+		public readonly FriendState State => SteamFriends.Internal.GetFriendPersonaState( Id );
 		
 		/// <summary>
 		/// Returns the player's current Steam name.
@@ -82,7 +82,7 @@ namespace Steamworks
 		///   Steam returns nicknames here if "Append nicknames to friends' names" is disabled in the Steam client.
 		/// </remarks> 
 		/// </summary>
-		public string Name => SteamFriends.Internal.GetFriendPersonaName( Id );
+		public readonly string Name => SteamFriends.Internal.GetFriendPersonaName( Id );
 		
 		/// <summary>
 		/// Returns the nickname that was set for this Steam player, if any.
@@ -90,12 +90,12 @@ namespace Steamworks
 		///   Steam will never return nicknames if "Append nicknames to friends' names" is disabled in the Steam client.
 		/// </remarks>
 		/// </summary>
-		public string Nickname => SteamFriends.Internal.GetPlayerNickname( Id );
+		public readonly string Nickname => SteamFriends.Internal.GetPlayerNickname( Id );
 		
 		/// <summary>
 		/// Returns the player's Steam name history.
 		/// </summary>
-		public IEnumerable<string> NameHistory
+		public readonly IEnumerable<string> NameHistory
 		{
 			get
 			{
@@ -110,11 +110,11 @@ namespace Steamworks
 			}
 		}
 
-		public int SteamLevel => SteamFriends.Internal.GetFriendSteamLevel( Id );
+		public readonly int SteamLevel => SteamFriends.Internal.GetFriendSteamLevel( Id );
 
 
 
-		public FriendGameInfo? GameInfo
+		public readonly FriendGameInfo? GameInfo
 		{
 			get
 			{
@@ -126,7 +126,7 @@ namespace Steamworks
 			}
 		}
 
-		public bool IsIn( SteamId group_or_room )
+		public readonly bool IsIn( SteamId group_or_room )
 		{
 			return SteamFriends.Internal.IsUserInSource( Id, group_or_room );
 		}
@@ -140,10 +140,10 @@ namespace Steamworks
 			public int ConnectionPort;
 			public int QueryPort;
 
-			public uint IpAddressRaw => GameIP;
-			public System.Net.IPAddress IpAddress => Utility.Int32ToIp( GameIP );
+			public readonly uint IpAddressRaw => GameIP;
+			public readonly System.Net.IPAddress IpAddress => Utility.Int32ToIp( GameIP );
 
-			public Lobby? Lobby
+			public readonly Lobby? Lobby
 			{
 				get
 				{
@@ -165,22 +165,22 @@ namespace Steamworks
 			}
 		}
 
-		public async Task<Data.Image?> GetSmallAvatarAsync()
+		public async readonly Task<Data.Image?> GetSmallAvatarAsync()
 		{
 			return await SteamFriends.GetSmallAvatarAsync( Id );
 		}
 
-		public async Task<Data.Image?> GetMediumAvatarAsync()
+		public async readonly Task<Data.Image?> GetMediumAvatarAsync()
 		{
 			return await SteamFriends.GetMediumAvatarAsync( Id );
 		}
 
-		public async Task<Data.Image?> GetLargeAvatarAsync()
+		public async readonly Task<Data.Image?> GetLargeAvatarAsync()
 		{
 			return await SteamFriends.GetLargeAvatarAsync( Id );
 		}
 
-		public string GetRichPresence( string key )
+		public readonly string GetRichPresence( string key )
 		{
 			var val = SteamFriends.Internal.GetFriendRichPresence( Id, key );
 			if ( string.IsNullOrEmpty( val ) ) return null;
@@ -190,7 +190,7 @@ namespace Steamworks
 		/// <summary>
 		/// Invite this friend to the game that we are playing
 		/// </summary>
-		public bool InviteToGame( string Text )
+		public readonly bool InviteToGame( string Text )
 		{
 			return SteamFriends.Internal.InviteUserToGame( Id, Text );
 		}
@@ -198,7 +198,7 @@ namespace Steamworks
 		/// <summary>
 		/// Sends a message to a Steam friend. Returns true if success
 		/// </summary>
-		public bool SendMessage( string message )
+		public readonly bool SendMessage( string message )
 		{
 			return SteamFriends.Internal.ReplyToFriendMessage( Id, message );
 		}
@@ -208,7 +208,7 @@ namespace Steamworks
 		/// Tries to get download the latest user stats
 		/// </summary>
 		/// <returns>True if successful, False if failure</returns>
-		public async Task<bool> RequestUserStatsAsync()
+		public async readonly Task<bool> RequestUserStatsAsync()
 		{
 			var result = await SteamUserStats.Internal.RequestUserStats( Id );
 			return result.HasValue && result.Value.Result == Result.OK;
@@ -220,7 +220,7 @@ namespace Steamworks
 		/// <param name="statName">The name of the stat you want to get</param>
 		/// <param name="defult">Will return this value if not available</param>
 		/// <returns>The value, or defult if not available</returns>
-		public float GetStatFloat( string statName, float defult = 0 )
+		public readonly float GetStatFloat( string statName, float defult = 0 )
 		{
 			var val = defult;
 
@@ -236,7 +236,7 @@ namespace Steamworks
 		/// <param name="statName">The name of the stat you want to get</param>
 		/// <param name="defult">Will return this value if not available</param>
 		/// <returns>The value, or defult if not available</returns>
-		public int GetStatInt( string statName, int defult = 0 )
+		public readonly int GetStatInt( string statName, int defult = 0 )
 		{
 			var val = defult;
 
@@ -252,7 +252,7 @@ namespace Steamworks
 		/// <param name="statName">The name of the achievement you want to get</param>
 		/// <param name="defult">Will return this value if not available</param>
 		/// <returns>The value, or defult if not available</returns>
-		public bool GetAchievement( string statName, bool defult = false )
+		public readonly bool GetAchievement( string statName, bool defult = false )
 		{
 			var val = defult;
 
@@ -267,7 +267,7 @@ namespace Steamworks
 		/// </summary>
 		/// <param name="statName">The name of the achievement you want to get</param>
 		/// <returns>The time unlocked. If it wasn't unlocked, or you haven't downloaded the stats yet - will return DateTime.MinValue</returns>
-		public DateTime GetAchievementUnlockTime( string statName )
+		public readonly DateTime GetAchievementUnlockTime( string statName )
 		{
 			bool val = false;
 			uint time = 0;

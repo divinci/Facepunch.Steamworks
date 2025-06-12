@@ -26,13 +26,13 @@ namespace Steamworks.Data
 			UserId = user;
 		}
 
-		internal void LocalUserOnly( [CallerMemberName] string caller = null )
+		internal readonly void LocalUserOnly( [CallerMemberName] string caller = null )
 		{
 			if ( UserId == 0 ) return;
 			throw new System.Exception( $"Stat.{caller} can only be called for the local user" );
 		}
 
-		public double GetGlobalFloat()
+		public readonly double GetGlobalFloat()
 		{
 			double val = 0.0;
 
@@ -42,14 +42,14 @@ namespace Steamworks.Data
 			return 0;
 		}
 
-		public long GetGlobalInt()
+		public readonly long GetGlobalInt()
 		{
 			long val = 0;
 			SteamUserStats.Internal.GetGlobalStat( Name, ref val );
 			return val;
 		}
 
-		public async Task<long[]> GetGlobalIntDaysAsync( int days )
+		public async readonly Task<long[]> GetGlobalIntDaysAsync( int days )
 		{
 			var result = await SteamUserStats.Internal.RequestGlobalStats( days );
 			if ( result?.Result != Result.OK  ) return null;
@@ -64,7 +64,7 @@ namespace Steamworks.Data
 			return r;
 		}
 
-		public async Task<double[]> GetGlobalFloatDays( int days )
+		public async readonly Task<double[]> GetGlobalFloatDays( int days )
 		{
 			var result = await SteamUserStats.Internal.RequestGlobalStats( days );
 			if ( result?.Result != Result.OK ) return null;
@@ -79,7 +79,7 @@ namespace Steamworks.Data
 			return r;
 		}
 
-		public float GetFloat()
+		public readonly float GetFloat()
 		{
 			float val = 0.0f;
 
@@ -95,7 +95,7 @@ namespace Steamworks.Data
 			return val;
 		}
 
-		public int GetInt()
+		public readonly int GetInt()
 		{
 			int val = 0;
 

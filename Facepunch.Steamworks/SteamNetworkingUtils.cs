@@ -362,7 +362,7 @@ namespace Steamworks
 			public string Msg;
 		}
 
-		private static System.Collections.Concurrent.ConcurrentQueue<DebugMessage> debugMessages = new System.Collections.Concurrent.ConcurrentQueue<DebugMessage>();
+		private static readonly System.Collections.Concurrent.ConcurrentQueue<DebugMessage> debugMessages = new System.Collections.Concurrent.ConcurrentQueue<DebugMessage>();
 
 		/// <summary>
 		/// This can be called from other threads - so we're going to queue these up and process them in a safe place.

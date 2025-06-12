@@ -123,7 +123,7 @@ namespace Steamworks
 		/// could be an issue is if the callback list is modified in the continuation
 		/// which would only happen if starting or shutting down in the callback.
 		/// </summary>
-		static List<Action<IntPtr>> actionsToCall = new List<Action<IntPtr>>();
+		static readonly List<Action<IntPtr>> actionsToCall = new List<Action<IntPtr>>();
 
 		/// <summary>
 		/// A callback is a general global message
@@ -282,7 +282,7 @@ namespace Steamworks
 			public bool server;
 		}
 
-		static Dictionary<CallbackType, List<Callback>> Callbacks = new Dictionary<CallbackType, List<Callback>>();
+		static readonly Dictionary<CallbackType, List<Callback>> Callbacks = new Dictionary<CallbackType, List<Callback>>();
 
 		/// <summary>
 		/// Install a global callback. The passed function will get called if it's all good.

@@ -65,7 +65,7 @@ namespace Steamworks
 		{
 			if ( string.IsNullOrEmpty( ExchangeSchema ) ) return null;
 
-			var parts = ExchangeSchema.Split( new[] { ';' }, StringSplitOptions.RemoveEmptyEntries );
+			var parts = ExchangeSchema.Split( separator, StringSplitOptions.RemoveEmptyEntries );
 
 			return parts.Select( x => InventoryRecipe.FromString( x, this ) ).ToArray();
 		}
@@ -98,7 +98,7 @@ namespace Steamworks
 			if ( _properties!= null && _properties.TryGetValue( name, out string val ) )
 				return val;
 
-			uint _ = (uint)Helpers.MemoryBufferSize;
+			//uint _ = (uint)Helpers.MemoryBufferSize;
 
 			if ( !SteamInventory.Internal.GetItemDefinitionProperty( Id, name, out var vl ) )
 				return null;
@@ -106,8 +106,7 @@ namespace Steamworks
 			if (name == null) //return keys string
 				return vl;
 				
-			if ( _properties == null )
-				_properties = new Dictionary<string, string>();
+			_properties ??= new Dictionary<string, string>();
 
 			_properties[name] = vl;
 
@@ -204,6 +203,7 @@ namespace Steamworks
 		public string LocalBasePriceFormatted => Utility.FormatPrice( SteamInventory.Currency, LocalPrice / 100.0 );
 
 		InventoryRecipe[] _recContaining;
+		private static readonly char[] separator = new[] { ';' };
 
 		/// <summary>
 		/// Return a list of recepies that contain this item
@@ -223,8 +223,8 @@ namespace Steamworks
 
 		public static bool operator ==( InventoryDef a, InventoryDef b )
 		{
-			if ( Object.ReferenceEquals( a, null ) )
-				return Object.ReferenceEquals( b, null );
+			if ( a is null )
+				return b is null;
 
 			return a.Equals( b );
 		}

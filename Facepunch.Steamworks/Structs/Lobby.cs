@@ -22,7 +22,7 @@ namespace Steamworks.Data
 		/// Try to join this room. Will return <see cref="RoomEnter.Success"/> on success,
 		/// and anything else is a failure.
 		/// </summary>
-		public async Task<RoomEnter> Join()
+		public async readonly Task<RoomEnter> Join()
 		{
 			var result = await SteamMatchmaking.Internal.JoinLobby( Id );
 			if ( !result.HasValue ) return RoomEnter.Error;
@@ -34,7 +34,7 @@ namespace Steamworks.Data
 		/// Leave a lobby; this will take effect immediately on the client side
 		/// other users in the lobby will be notified by a LobbyChatUpdate_t callback
 		/// </summary>
-		public void Leave()
+		public readonly void Leave()
 		{
 			SteamMatchmaking.Internal.LeaveLobby( Id );
 		}
@@ -44,7 +44,7 @@ namespace Steamworks.Data
 		/// Will return <see langword="true"/> if the invite is successfully sent, whether or not the target responds
 		/// returns <see langword="false"/> if the local user is not connected to the Steam servers
 		/// </summary>
-		public bool InviteFriend( SteamId steamid )
+		public readonly bool InviteFriend( SteamId steamid )
 		{
 			return SteamMatchmaking.Internal.InviteUserToLobby( Id, steamid );
 		}
@@ -52,7 +52,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Gets the number of users in this lobby.
 		/// </summary>
-		public int MemberCount => SteamMatchmaking.Internal.GetNumLobbyMembers( Id );
+		public readonly int MemberCount => SteamMatchmaking.Internal.GetNumLobbyMembers( Id );
 
 		/// <summary>
 		/// Returns current members in the lobby. The current user must be in the lobby in order to see the users.
@@ -72,7 +72,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Get data associated with this lobby.
 		/// </summary>
-		public string GetData( string key )
+		public readonly string GetData( string key )
 		{
 			return SteamMatchmaking.Internal.GetLobbyData( Id, key );
 		}
@@ -80,7 +80,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Set data associated with this lobby.
 		/// </summary>
-		public bool SetData( string key, string value )
+		public readonly bool SetData( string key, string value )
 		{
 			if ( key.Length > 255 ) throw new System.ArgumentException( "Key should be < 255 chars", nameof( key ) );
 			if ( value.Length > 8192 ) throw new System.ArgumentException( "Value should be < 8192 chars", nameof( key ) );
@@ -91,7 +91,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Removes a metadata key from the lobby.
 		/// </summary>
-		public bool DeleteData( string key )
+		public readonly bool DeleteData( string key )
 		{
 			return SteamMatchmaking.Internal.DeleteLobbyData( Id, key );
 		}
@@ -99,7 +99,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Get all data for this lobby.
 		/// </summary>
-		public IEnumerable<KeyValuePair<string, string>> Data
+		public readonly IEnumerable<KeyValuePair<string, string>> Data
 		{
 			get
 			{
@@ -118,7 +118,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Gets per-user metadata for someone in this lobby.
 		/// </summary>
-		public string GetMemberData( Friend member, string key )
+		public readonly string GetMemberData( Friend member, string key )
 		{
 			return SteamMatchmaking.Internal.GetLobbyMemberData( Id, member.Id, key );
 		}
@@ -126,7 +126,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sets per-user metadata (for the local user implicitly).
 		/// </summary>
-		public void SetMemberData( string key, string value )
+		public readonly void SetMemberData( string key, string value )
 		{
 			SteamMatchmaking.Internal.SetLobbyMemberData( Id, key, value );
 		}
@@ -155,7 +155,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sends bytes to the chat room from an unsafe buffer.
 		/// </summary>
-		public unsafe bool SendChatBytesUnsafe( byte* ptr, int length )
+		public readonly unsafe bool SendChatBytesUnsafe( byte* ptr, int length )
 		{
 			return SteamMatchmaking.Internal.SendLobbyChatMsg( Id, (IntPtr)ptr, length );
 		}
@@ -171,7 +171,7 @@ namespace Steamworks.Data
 		/// If the specified lobby doesn't exist, LobbyDataUpdate_t::m_bSuccess will be set to <see langword="false"/>.
 		/// </para>
 		/// </summary>
-		public bool Refresh()
+		public readonly bool Refresh()
 		{
 			return SteamMatchmaking.Internal.RequestLobbyData( Id );
 		}
@@ -180,7 +180,7 @@ namespace Steamworks.Data
 		/// Max members able to join this lobby. Cannot be over <c>250</c>.
 		/// Can only be set by the owner of the lobby.
 		/// </summary>
-		public int MaxMembers
+		public readonly int MaxMembers
 		{
 			get => SteamMatchmaking.Internal.GetLobbyMemberLimit( Id );
 			set => SteamMatchmaking.Internal.SetLobbyMemberLimit( Id, value );
@@ -189,7 +189,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sets the lobby as public.
 		/// </summary>
-		public bool SetPublic()
+		public readonly bool SetPublic()
 		{
 			return SteamMatchmaking.Internal.SetLobbyType( Id, LobbyType.Public );
 		}
@@ -197,7 +197,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sets the lobby as private.
 		/// </summary>
-		public bool SetPrivate()
+		public readonly bool SetPrivate()
 		{
 			return SteamMatchmaking.Internal.SetLobbyType( Id, LobbyType.Private );
 		}
@@ -205,7 +205,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sets the lobby as invisible.
 		/// </summary>
-		public bool SetInvisible()
+		public readonly bool SetInvisible()
 		{
 			return SteamMatchmaking.Internal.SetLobbyType( Id, LobbyType.Invisible );
 		}
@@ -213,7 +213,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Sets the lobby as friends only.
 		/// </summary>
-		public bool SetFriendsOnly()
+		public readonly bool SetFriendsOnly()
 		{
 			return SteamMatchmaking.Internal.SetLobbyType( Id, LobbyType.FriendsOnly );
 		}
@@ -222,7 +222,7 @@ namespace Steamworks.Data
 		/// Set whether or not the lobby can be joined.
 		/// </summary>
 		/// <param name="b">Whether or not the lobby can be joined.</param>
-		public bool SetJoinable( bool b )
+		public readonly bool SetJoinable( bool b )
 		{
 			return SteamMatchmaking.Internal.SetLobbyJoinable( Id, b );
 		}
@@ -232,7 +232,7 @@ namespace Steamworks.Data
 		/// Allows the owner to set the game server associated with the lobby. Triggers the
 		/// Steammatchmaking.OnLobbyGameCreated event.
 		/// </summary>
-		public void SetGameServer( SteamId steamServer )
+		public readonly void SetGameServer( SteamId steamServer )
 		{
 			if ( !steamServer.IsValid )
 				throw new ArgumentException( $"SteamId for server is invalid" );
@@ -245,7 +245,7 @@ namespace Steamworks.Data
 		/// Allows the owner to set the game server associated with the lobby. Triggers the
 		/// Steammatchmaking.OnLobbyGameCreated event.
 		/// </summary>
-		public void SetGameServer( string ip, ushort port )
+		public readonly void SetGameServer( string ip, ushort port )
 		{
 			if ( !IPAddress.TryParse( ip, out IPAddress add ) )
 				throw new ArgumentException( $"IP address for server is invalid" );
@@ -257,7 +257,7 @@ namespace Steamworks.Data
 		/// Gets the details of the lobby's game server, if set. Returns true if the lobby is
 		/// valid and has a server set, otherwise returns false.
 		/// </summary>
-		public bool GetGameServer( ref uint ip, ref ushort port, ref SteamId serverId )
+		public readonly bool GetGameServer( ref uint ip, ref ushort port, ref SteamId serverId )
 		{
 			return SteamMatchmaking.Internal.GetLobbyGameServer( Id, ref ip, ref port, ref serverId );
 		}
@@ -265,7 +265,7 @@ namespace Steamworks.Data
 		/// <summary>
 		/// Gets or sets the owner of the lobby. You must be the lobby owner to set the owner
 		/// </summary>
-		public Friend Owner
+		public readonly Friend Owner
 		{
 			get => new Friend( SteamMatchmaking.Internal.GetLobbyOwner( Id ) );
 			set => SteamMatchmaking.Internal.SetLobbyOwner( Id, value.Id );

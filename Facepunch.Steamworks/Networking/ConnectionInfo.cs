@@ -25,21 +25,21 @@ namespace Steamworks.Data
 		/// <summary>
 		/// High level state of the connection
 		/// </summary>
-		public ConnectionState State => state;
+		public readonly ConnectionState State => state;
 
 		/// <summary>
 		/// Remote address.  Might be all 0's if we don't know it, or if this is N/A.
 		/// </summary>
-		public NetAddress Address => address;
+		public readonly NetAddress Address => address;
 
 		/// <summary>
 		/// Who is on the other end?  Depending on the connection type and phase of the connection, we might not know
 		/// </summary>
-		public NetIdentity Identity => identity;
+		public readonly NetIdentity Identity => identity;
 
 		/// <summary>
 		/// Basic cause of the connection termination or problem.
 		/// </summary>
-		public NetConnectionEnd EndReason => (NetConnectionEnd)endReason;
+		public readonly NetConnectionEnd EndReason => (NetConnectionEnd)endReason;
 	}
 }

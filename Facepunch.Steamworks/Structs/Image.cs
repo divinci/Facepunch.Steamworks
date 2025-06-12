@@ -14,7 +14,7 @@ namespace Steamworks.Data
 		/// <param name="y">Y-coordinate</param>
 		/// <returns>The color.</returns>
 		/// <exception cref="System.ArgumentException">If the X and Y or out of bounds.</exception>
-		public Color GetPixel( int x, int y )
+		public readonly Color GetPixel( int x, int y )
 		{
 			if ( x < 0 || x >= Width ) throw new System.ArgumentException( "x out of bounds" );
 			if ( y < 0 || y >= Height ) throw new System.ArgumentException( "y out of bounds" );
@@ -35,7 +35,7 @@ namespace Steamworks.Data
 		/// Returns "{Width}x{Height} ({length of <see cref="Data"/>}bytes)"
 		/// </summary>
 		/// <returns></returns>
-		public override string ToString()
+		public override readonly string ToString()
 		{
 			return $"{Width}x{Height} ({Data.Length}bytes)";
 		}

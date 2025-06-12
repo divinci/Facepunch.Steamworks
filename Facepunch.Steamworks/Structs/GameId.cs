@@ -32,19 +32,19 @@ namespace Steamworks.Data
 
 		public GameIdType Type
 		{
-			get => (GameIdType)(byte)( Value >> 24 );
+			readonly get => (GameIdType)(byte)( Value >> 24 );
 			set => Value = ( Value & 0xFFFFFFFF_00FFFFFF ) | ( (ulong)(byte)value << 24 );
 		}
 		
 		public uint AppId
 		{
-			get => (uint)( Value & 0x00000000_00FFFFFF );
+			readonly get => (uint)( Value & 0x00000000_00FFFFFF );
 			set => Value = ( Value & 0xFFFFFFFF_FF000000 ) | (value & 0x00000000_00FFFFFF);
 		}
 		
 		public uint ModId
 		{
-			get => (uint)( Value >> 32 );
+			readonly get => (uint)( Value >> 32 );
 			set => Value = ( Value & 0x00000000_FFFFFFFF ) | ( (ulong)value << 32 );
 		}
 
@@ -58,7 +58,7 @@ namespace Steamworks.Data
 			return value.Value;
 		}
 
-		public bool Equals(GameId other)
+		public readonly bool Equals(GameId other)
 		{
 			return Value == other.Value;
 		}
@@ -68,7 +68,7 @@ namespace Steamworks.Data
 			return obj is GameId other && Equals(other);
 		}
 
-		public override int GetHashCode()
+		public override readonly int GetHashCode()
 		{
 			return Value.GetHashCode();
 		}

@@ -86,7 +86,7 @@ namespace Steamworks
 			return r;
 		}
 
-		internal bool ContainsIngredient( InventoryDef inventoryDef )
+		internal readonly bool ContainsIngredient( InventoryDef inventoryDef )
 		{
 			return Ingredients.Any( x => x.DefinitionId == inventoryDef.Id );
 		}
@@ -94,7 +94,7 @@ namespace Steamworks
 		public static bool operator ==( InventoryRecipe a, InventoryRecipe b ) => a.GetHashCode() == b.GetHashCode();
 		public static bool operator !=( InventoryRecipe a, InventoryRecipe b ) => a.GetHashCode() != b.GetHashCode();
 		public override bool Equals( object p ) => this.Equals( (InventoryRecipe)p );
-		public override int GetHashCode()
+		public override readonly int GetHashCode()
 		{
 			return Source.GetHashCode();
 		}
